@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@400;700&display=swap');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,12 +18,30 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  letter-spacing: 1px;
+  text-decoration: none;
+
+}
+.gradient-span{
+  
+    -webkit-background-clip: text !important;
+    
+  -webkit-text-fill-color: transparent;
+    background: linear-gradient(145deg,#92FFC0,#002661);
+  
 }

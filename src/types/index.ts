@@ -18,3 +18,10 @@ export type IGenericErrorMessage = {
   path: string | number;
   message: string;
 };
+export interface OrderTableDataType {
+  key: string;
+  name: string;
+  contact: string;
+  address: string;
+  services: string[];
+}

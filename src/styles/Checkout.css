@@ -1,0 +1,117 @@
+.checkout-page{
+    padding-top: 120px;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.schedule ,.contact ,.address ,.service-detail{
+    border: 1px solid cadetblue;
+    padding: 2vw;
+    margin: 2vw;
+    font-size: 1.3vw;
+}
+.icon-and-title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.sub
+{
+    color: grey;
+    font-size: 1vw;
+    padding: 1vw 1.5vw;
+    margin-bottom: 0.5vw;
+}
+.schedule-time{
+    padding: 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid cadetblue;
+    font-size: 1.2vw;
+}
+.icon{
+    color: cadetblue !important;
+    font-size: 2vw;
+    margin-right: 0.8vw;
+}
+.change-btn{
+    border-bottom: 2px dotted black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.name-and-number,.address-inputs {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.name-and-number{
+    justify-content: space-around;
+    
+    border: 1px solid cadetblue;
+    padding: 0.7vw 0.5vw;
+    font-size: 1.2vw;
+}
+.address-input{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.2vw;
+}
+.address-input-field{
+    border: 1px solid cadetblue;
+    padding: 3px 10px;
+    margin: 0 1.5vw 1vw 0;
+    border-radius: 5px;
+}
+.order-summary{
+    border-left: 1px solid #d7d7d7;
+    padding-left: 4vw;
+    width: 50vw;
+}
+.order-heading{
+    font-size: 2.5vw;
+    text-align: center;
+    font-weight: bold;
+}
+.price-details,.subtotal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price-details{
+    font-size: 1.4vw;
+    color: grey;
+    margin: 0.5vw 2vw;
+
+}
+.subtotal{
+    font-size: 1.4vw;
+    margin:0.5vw 2vw; 
+}
+.price{
+    color: cadetblue;
+    font-weight: bold;
+}
+.terms{
+    font-size: 1.2vw;
+    color: grey;
+    margin: 2vw;
+}
+.message-input-area{
+    width: 40vw;
+    height: 30vh;
+    border: 1px solid cadetblue;
+    border-radius: 5px;
+    margin: 3vw 0;
+}
+.place-order-btn{
+    padding: 1vw 2vw;
+    font-size: 2vw;
+    color: white;
+    background-color: cadetblue;
+    width: 40vw;
+}

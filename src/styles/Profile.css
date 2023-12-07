@@ -1,0 +1,35 @@
+
+.profile-page{
+    display: flex;
+    justify-content: space-around;
+    align-items: space-around;
+
+}
+.edit-profile-inputs {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.edit-profile-input{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.2vw;
+    color: #414A4C;
+}
+.edit-profile-input-field{
+    border: 1px solid cadetblue;
+    padding: 3px 10px;
+    margin: 0 1.5vw 1vw 0;
+    
+}
+
+.save-btn{
+    padding: 1vw 2vw;
+     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+}

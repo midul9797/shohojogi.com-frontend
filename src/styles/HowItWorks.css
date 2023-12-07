@@ -1,0 +1,33 @@
+.how-it-works
+{
+    margin: 7vw auto;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    background-color: #F0FFFE;
+    padding: 3vw;
+}
+.how-it-works-details{
+    margin:auto
+}
+.how-it-works-detail
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2vw;
+}
+.how-it-works-detail-number
+{
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    margin-right: 1.5vw;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg,#92FFC0,#002661);
+    border-radius: 50%;
+}

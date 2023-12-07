@@ -1,0 +1,54 @@
+.service-details-page{
+    padding: 150px 5vw;
+   color: #333333;
+   font-size: 1.3vw;
+   line-height: 2;
+    
+}
+.service-details-banner
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7vw;
+}
+
+.service-details-tagline-checked
+{
+    width: 20px;
+    height: 20px;
+    margin-right: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 10px;
+    color: white;
+    background: linear-gradient(135deg,#92FFC0,#002661);
+}
+.cart-btn{
+    padding: 1.1vw 2.5vw;
+    background-color: #1D94A4;
+    color: white;
+    font-size: 1.3vw;
+    margin: 0 auto;
+    transition: transform 0.3s linear;
+}
+.cart-btn:hover{
+    transform: scale(1.1);
+
+    
+}
+.service-details-one{
+   
+    display: flex;
+}
+.service-overview{
+    width: 30vw;
+    
+}
+#faq,#details{
+    width: 70vw;
+    padding-left: 30px;
+    border-left: 2px solid grey;
+}
