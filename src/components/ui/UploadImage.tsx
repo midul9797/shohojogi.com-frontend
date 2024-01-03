@@ -1,5 +1,9 @@
 "use client";
 import {
+  useProfileQuery,
+  useUpdateProfileMutation,
+} from "@/redux/api/profileApi";
+import {
   CameraOutlined,
   LoadingOutlined,
   PlusOutlined,
@@ -9,7 +13,7 @@ import { Avatar, message, Upload } from "antd";
 import type { UploadChangeParam } from "antd/es/upload";
 import type { RcFile, UploadFile, UploadProps } from "antd/es/upload/interface";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
@@ -34,13 +38,11 @@ type ImageUploadProps = {
 };
 
 const UploadImage = ({ name }: ImageUploadProps) => {
+  const { data } = useProfileQuery({});
+  console.log(data);
+  const [profile] = useUpdateProfileMutation();
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string>(
-    "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-  );
-
-  const [value, setValue] = useState<string>();
-
+  const [imageUrl, setImageUrl] = useState<string>();
   const handleChange: UploadProps["onChange"] = (
     info: UploadChangeParam<UploadFile>
   ) => {
@@ -51,14 +53,18 @@ const UploadImage = ({ name }: ImageUploadProps) => {
     if (info.file.status === "done") {
       // Get this url from response in real world.
       //   setValue(name, info.file.originFileObj);
-      getBase64(info.file.originFileObj as RcFile, (url) => {
-        console.log(url);
+      getBase64(info.file.originFileObj as RcFile, async (url) => {
         setLoading(false);
         setImageUrl(url);
+        const res = await profile({ profileImg: url });
+        console.log(res);
+        if (res) message.success("Image Uploaded Successfully");
       });
     }
   };
-
+  useEffect(() => {
+    if (data?.profileImg) setImageUrl(data.profileImg);
+  }, []);
   return (
     <>
       <div

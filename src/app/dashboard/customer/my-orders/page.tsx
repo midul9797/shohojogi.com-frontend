@@ -1,67 +1,87 @@
 "use client";
-import OrderTable from "@/components/ui/OrderTable";
-import { useGetOrdersQuery } from "@/redux/api/orderApi";
+import React, { useEffect } from "react";
+import { Button, Space, Table, Tag, message } from "antd";
+import type { ColumnsType } from "antd/es/table";
 import { OrderTableDataType } from "@/types";
-import { Button, Tag } from "antd";
-import { ColumnsType } from "antd/es/table";
-import React from "react";
+import OrderTable from "@/components/ui/OrderTable";
+import {
+  useDeleteOrderMutation,
+  useGetOrdersQuery,
+  useLazyGetOrdersQuery,
+} from "@/redux/api/orderApi";
 let colors = ["geekblue", "green", "volcano"];
-const columns: ColumnsType<OrderTableDataType> = [
-  {
-    title: "Contact",
-    dataIndex: "contact",
-    key: "contact",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Services",
-    key: "services",
-    dataIndex: "services",
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Button type="primary" style={{ backgroundColor: "red" }}>
-        Cancel
-      </Button>
-    ),
-  },
-];
 
-const dat: OrderTableDataType[] = [
-  {
-    key: "1",
-    name: "John Brown",
-    contact: "01891662526",
-    address: "New York No. 1 Lake Park",
-    services: ["House Shifting", "Cleaning"],
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    contact: "01891662526",
-    address: "London No. 1 Lake Park",
-    services: ["Plumbing"],
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    contact: "01891662526",
-    address: "Sydney No. 1 Lake Park",
-    services: ["Appliance Repair"],
-  },
-];
-export default function MyOrders() {
-  const { data } = useGetOrdersQuery({});
+export default function MangeOrders() {
+  const [trigger, { data }] = useLazyGetOrdersQuery({});
+  const [deleteOrder] = useDeleteOrderMutation();
+  const columns: ColumnsType<OrderTableDataType> = [
+    {
+      title: "Name",
+      dataIndex: "user",
+      key: "first_name",
+      render: (text) => (
+        <p style={{ color: "cadetblue", fontWeight: "bold" }}>
+          {Object.values(text)[1] as string}
+        </p>
+      ),
+    },
+    {
+      title: "Contact",
+      dataIndex: "contact",
+      key: "contact",
+    },
+    {
+      title: "Service",
+      key: "service",
+      dataIndex: "service",
+    },
+    {
+      title: "Schedule Time",
+      key: "schedule time",
+      dataIndex: "delivery_time",
+    },
+    {
+      title: "Amount",
+      key: "amount",
+      dataIndex: "total_amount",
+      render: (text) => (
+        <p style={{ fontWeight: "bold" }}>
+          {text}
+          <span style={{ fontSize: "20px", fontWeight: "bold" }}>&#2547;</span>
+        </p>
+      ),
+    },
+    {
+      title: "Action",
+      key: "action",
+      dataIndex: "id",
+      render: (text) => (
+        <Button
+          type="primary"
+          style={{ backgroundColor: "red" }}
+          onClick={() => handleDelete(text)}
+        >
+          Cancel
+        </Button>
+      ),
+    },
+  ];
+  const handleDelete = async (id: string) => {
+    if (id) {
+      const res: any = await deleteOrder(id);
+      if (res?.data) {
+        message.success("Deleted Successfully");
+        trigger({});
+      } else message.error("Failed to delete");
+    }
+  };
+  useEffect(() => {
+    trigger({});
+  }, []);
   console.log(data);
   return (
     <>
-      <OrderTable columns={columns} data={dat} />
+      <OrderTable columns={columns} data={data} />
     </>
   );
 }
