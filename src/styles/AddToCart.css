@@ -61,7 +61,7 @@
     justify-content: space-between;
     align-items: center;
 }
-.price{color: rgb(16, 112, 116)}
+.price{color: rgb(16, 112, 116);margin-right: 5vw;}
 .subtotal{
     display: flex;
     justify-content: space-between;

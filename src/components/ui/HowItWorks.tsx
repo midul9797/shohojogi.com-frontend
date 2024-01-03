@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 import "../../styles/HowItWorks.css";
-export default function HowItWorks({ image }: any) {
+export default function HowItWorks({ image, width = "90%" }: any) {
   return (
-    <div className="how-it-works">
+    <div className="how-it-works" style={{ width: width }}>
       <p style={{ marginTop: "3vw", fontSize: "1.2vw" }}>HOW IT WORKS</p>
       <Image src={image} alt="How it works image" style={{ width: "40vw" }} />
       <div className="how-it-works-details">

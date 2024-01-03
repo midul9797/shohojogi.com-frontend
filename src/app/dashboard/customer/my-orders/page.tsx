@@ -1,19 +1,12 @@
 "use client";
 import OrderTable from "@/components/ui/OrderTable";
+import { useGetOrdersQuery } from "@/redux/api/orderApi";
 import { OrderTableDataType } from "@/types";
 import { Button, Tag } from "antd";
 import { ColumnsType } from "antd/es/table";
 import React from "react";
 let colors = ["geekblue", "green", "volcano"];
 const columns: ColumnsType<OrderTableDataType> = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    render: (text) => (
-      <p style={{ color: "cadetblue", fontWeight: "bold" }}>{text}</p>
-    ),
-  },
   {
     title: "Contact",
     dataIndex: "contact",
@@ -28,18 +21,6 @@ const columns: ColumnsType<OrderTableDataType> = [
     title: "Services",
     key: "services",
     dataIndex: "services",
-    render: (_, { services }) => (
-      <>
-        {services.map((tag, index) => {
-          let color = colors[index % 3];
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
   },
   {
     title: "Action",
@@ -52,7 +33,7 @@ const columns: ColumnsType<OrderTableDataType> = [
   },
 ];
 
-const data: OrderTableDataType[] = [
+const dat: OrderTableDataType[] = [
   {
     key: "1",
     name: "John Brown",
@@ -76,9 +57,11 @@ const data: OrderTableDataType[] = [
   },
 ];
 export default function MyOrders() {
+  const { data } = useGetOrdersQuery({});
+  console.log(data);
   return (
     <>
-      <OrderTable columns={columns} data={data} />
+      <OrderTable columns={columns} data={dat} />
     </>
   );
 }

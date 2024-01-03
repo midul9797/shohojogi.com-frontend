@@ -18,7 +18,11 @@ export const getUserInfo = () => {
     return "";
   }
 };
-
+export const isAdmin = () => {
+  const result = getUserInfo() as any;
+  if (result && result?.role === "admin") return true;
+  else return false;
+};
 export const isLoggedIn = () => {
   const authToken = getFromLocalStorage(authKey);
   return !!authToken;

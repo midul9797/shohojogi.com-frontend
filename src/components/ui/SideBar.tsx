@@ -5,7 +5,7 @@ import { Avatar, Layout, Menu } from "antd";
 
 import { sidebarItems } from "@/constants/sidebarItems";
 
-import { getUserInfo } from "@/service/auth.service";
+import { getUserInfo, isAdmin } from "@/service/auth.service";
 import Image from "next/image";
 import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
@@ -15,8 +15,7 @@ const { Sider } = Layout;
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
-  //   const { role } = getUserInfo() as any;
-  const role = "admin";
+  const { role } = getUserInfo() as any;
 
   return (
     <Sider

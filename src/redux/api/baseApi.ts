@@ -10,3 +10,9 @@ export const baseApi = createApi({
   endpoints: () => ({}),
   tagTypes: tagTypesList,
 });
+export const basePaymentApi = createApi({
+  reducerPath: "paymentApi",
+  baseQuery: axiosBaseQuery({ baseUrl: "http://localhost:3333/api/v1/" }),
+  endpoints: () => ({}),
+  tagTypes: tagTypesList,
+});

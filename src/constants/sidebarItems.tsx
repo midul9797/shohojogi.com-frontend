@@ -61,7 +61,7 @@ export const sidebarItems = (role: string) => {
   ];
 
   if (role === "admin") return commonAdminSidebarItems;
-  else if (role === "user") return commonUserSidebarItems;
+  else if (role === "customer") return commonUserSidebarItems;
   else {
     return defaultSidebarItems;
   }

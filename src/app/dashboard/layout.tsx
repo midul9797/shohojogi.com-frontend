@@ -31,7 +31,7 @@ function getItem(
 }
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const admin = false;
+  const admin = true;
   const [collapsed, setCollapsed] = useState(false);
 
   return (

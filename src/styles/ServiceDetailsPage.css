@@ -52,3 +52,12 @@
     padding-left: 30px;
     border-left: 2px solid grey;
 }
+.details_heading{
+    font-size: 1.4vw;
+    color: #002661;
+    font-weight: bold;
+}
+.details_list_items{
+    padding-left: 3vw;
+    list-style-type: disc;
+}

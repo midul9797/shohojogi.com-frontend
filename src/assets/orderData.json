@@ -1,0 +1,107 @@
+[
+    {
+        "title": "House Shifting",
+        "items": [
+            {
+                "item": "Single Bed / Room",
+                "price": 2000
+            },
+            {
+                "item": "Double Bed / Room",
+                "price": 3000
+            }
+        ]
+    },
+    {
+        "title": "Home Appliance",
+        "items": [
+            {
+                "item": "1 Ton AC",
+                "price": 1000
+            },
+            {
+                "item": "2 Ton AC",
+                "price": 1700
+            },
+            {
+                "item": "3 Ton AC",
+                "price": 2500
+            },
+            {
+                "item": "4 Ton AC",
+                "price": 3400
+            },
+            {
+                "item": "Oven",
+                "price": 1000
+            },
+            {
+                "item": "Washing Machine",
+                "price": 1500
+            },
+            {
+                "item": "TV",
+                "price": 2000
+            }
+        ]
+    },
+    {
+        "title": "Home Cleaning",
+        "items": [
+            {
+                "item": "Full Home Cleaning",
+                "price": 1500
+            },
+            {
+                "item": "Kitchen Cleaning",
+                "price": 500
+            },
+            {
+                "item": "Bathroom Cleaning",
+                "price": 300
+            },
+            {
+                "item": "Full Window Cleaning",
+                "price": 300
+            }
+        ]
+    },
+    {
+        "title": "Plumbing",
+        "items": [
+            {
+                "item": "Sink Repair",
+                "price": 300
+            },
+            {
+                "item": "Sink Installation",
+                "price": 400
+            },
+            {
+                "item": "Water Tap Repair",
+                "price": 200
+            },
+            {
+                "item": "Water Tap Installation",
+                "price": 300
+            }
+        ]
+    },
+    {
+        "title": "Electrician",
+        "items": [
+            {
+                "item": "Ceiling Fan Service",
+                "price": 200
+            },
+            {
+                "item": "Light Servicing",
+                "price": 150
+            },
+            {
+                "item": "Main Board Servicing",
+                "price": 500
+            }
+        ]
+    }
+]

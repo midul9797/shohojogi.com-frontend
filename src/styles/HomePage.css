@@ -8,7 +8,7 @@
     padding-top: 100px;
     justify-content: space-between;
     align-items: center;
-    align-items: center;
+ 
     overflow-x: hidden;
     
 }
@@ -20,13 +20,13 @@
     flex-direction: column;
 }
 .home-headline {
-    font-size: 5vw!important;
+    font-size: 4.5vw!important;
     font-weight: bold;
     
 }
 
 .home-sub-headline{
-    font-size: 1.5vw!important;
+    font-size: 1.3vw!important;
     color: grey;
     
 }
@@ -73,6 +73,7 @@
     align-items: center;
     flex-direction: column;
    text-align: center;
+   margin: 0px auto ;
 }
 .service-image{
     width: 15vw;

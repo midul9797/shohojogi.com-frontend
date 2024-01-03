@@ -1,16 +1,25 @@
 "use client";
 import { UserOutlined } from "@ant-design/icons";
-import { Dropdown, Avatar, Button } from "antd";
+import { Dropdown, Avatar, Button, message } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
 import "@/styles/Navbar.css";
+import { isLoggedIn, removeUserInfo } from "@/service/auth.service";
+import { useProfileQuery } from "@/redux/api/profileApi";
 export default function Navbar() {
-  const admin = true;
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const { data } = useProfileQuery({});
+
+  useEffect(() => {
+    setLoggedIn(isLoggedIn());
+  }, []);
   const profileItems: MenuProps["items"] = [
     {
       label: (
-        <p style={{ fontWeight: "bold", fontSize: "1.2vw" }}>Moklasur Rahman</p>
+        <p style={{ fontWeight: "bold", fontSize: "1.2vw" }}>
+          {data?.first_name} {data?.last_name}
+        </p>
       ),
       key: "0",
     },
@@ -23,7 +32,15 @@ export default function Navbar() {
     },
     {
       label: (
-        <Button type="link" style={{ color: "red", fontWeight: "bold" }}>
+        <Button
+          type="link"
+          style={{ color: "red", fontWeight: "bold" }}
+          onClick={() => {
+            removeUserInfo("accessToken");
+            setLoggedIn(false);
+            message.success("User logged out successfully");
+          }}
+        >
           LogOut
         </Button>
       ),
@@ -58,8 +75,8 @@ export default function Navbar() {
     {
       key: "4",
       label: (
-        <Link href="/services/appliance-servicing" style={{ fontSize: "1vw" }}>
-          Appliance Servicing
+        <Link href="/services/home-appliance" style={{ fontSize: "1vw" }}>
+          Home Appliance
         </Link>
       ),
     },
@@ -73,7 +90,6 @@ export default function Navbar() {
     },
   ];
 
-  const user = true;
   return (
     <div className="navbar">
       <Link href={"/"} className="navbar-logo">
@@ -85,7 +101,7 @@ export default function Navbar() {
             All Services
           </a>
         </Dropdown>
-        {user ? (
+        {loggedIn ? (
           <Dropdown menu={{ items: profileItems }} trigger={["click"]}>
             <a onClick={(e) => e.preventDefault()}>
               <Avatar
@@ -97,9 +113,20 @@ export default function Navbar() {
             </a>
           </Dropdown>
         ) : (
-          <Link href={"/login"} className="navbar-item">
-            LOGIN
-          </Link>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "50%",
+            }}
+          >
+            <Link href={"/login"} className="navbar-item">
+              LOGIN
+            </Link>
+            <Link href={"/signup"} className="navbar-item">
+              SIGN UP
+            </Link>
+          </div>
         )}
       </div>
     </div>
