@@ -29,14 +29,16 @@ type FormValues = {
 const LoginPage = () => {
   const [userLogin] = useUserLoginMutation();
   const router = useRouter();
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const res = await userLogin({ ...data }).unwrap();
 
       if (res) {
-        router.push("/home");
+        router.back();
         message.success("User logged in successfully!");
-        storeUserInfo({ accessToken: res });
+        console.log(res);
+        storeUserInfo(res);
       } else message.error("Wrong email or password");
     } catch (err: any) {
       console.error(err.message);
@@ -103,6 +105,7 @@ const LoginPage = () => {
                   height: "40px",
                   fontSize: "20px",
                   marginTop: "20px",
+                  backgroundColor: "#1D94A4",
                 }}
               >
                 Login

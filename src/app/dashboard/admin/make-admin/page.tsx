@@ -39,7 +39,7 @@ export default function MakeAdmin() {
             width: "300px",
             marginTop: "2vw",
             padding: "0.7vw 1vw",
-            border: "1px solid cadetblue",
+            border: "1px solid #1D94A4",
           }}
         />
         <div>
@@ -48,7 +48,7 @@ export default function MakeAdmin() {
             htmlType="submit"
             style={{
               margin: "2vw auto",
-              backgroundColor: "cadetblue",
+              backgroundColor: "#1D94A4",
             }}
           >
             Create

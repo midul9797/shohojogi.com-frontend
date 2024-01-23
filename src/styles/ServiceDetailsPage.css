@@ -1,5 +1,5 @@
 .service-details-page{
-    padding: 150px 5vw;
+    padding: 120px 5vw;
    color: #333333;
    font-size: 1.3vw;
    line-height: 2;
@@ -51,6 +51,19 @@
     width: 70vw;
     padding-left: 30px;
     border-left: 2px solid grey;
+    
+}
+#details h1,h2{
+    font-size: 1.8vw;
+    font-weight: bolder;
+}
+#details h3,h4{
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+#details ul{
+    padding-left: 3vw;
+    list-style-type: disc !important;
 }
 .details_heading{
     font-size: 1.4vw;

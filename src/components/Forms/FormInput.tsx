@@ -7,6 +7,7 @@ interface IInput {
   name: string;
   type?: string;
   size?: "large" | "small";
+  defaultValue?: string | string[] | undefined;
   value?: string | string[] | undefined;
   id?: string;
   placeholder?: string;
@@ -19,6 +20,7 @@ const FormInput = ({
   name,
   type,
   size = "small",
+  defaultValue,
   value,
   id,
   placeholder,
@@ -57,7 +59,12 @@ const FormInput = ({
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
-              style={{ fontSize: "1.2vw", height: "35px" }}
+              style={{
+                fontSize: "1.2vw",
+                padding: "6px 12px",
+                display: "flex",
+                alignItems: "center",
+              }}
             />
           ) : (
             <Input
@@ -66,7 +73,13 @@ const FormInput = ({
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
-              style={{ fontSize: "1.2vw", height: "35px" }}
+              defaultValue={defaultValue ? defaultValue : ""}
+              style={{
+                fontSize: "1.2vw",
+                padding: "6px 12px",
+                display: "flex",
+                alignItems: "center",
+              }}
             />
           )
         }

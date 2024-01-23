@@ -44,22 +44,25 @@ export default function CheckoutPage() {
   const [isScheduleModalOpen, setIsScheduleModalOpen] =
     useState<boolean>(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState<boolean>(false);
-  const [initPayment] = useInitPaymentMutation();
   const [placeOrder] = usePlaceOrderMutation();
   const [day, setDay] = useState<number>(today.getDate());
   const [month, setMonth] = useState<string>(monthNames[today.getMonth()]);
   const [year, setYear] = useState<number>(today.getFullYear());
   const [time, setTime] = useState<string>("00:00 am");
   const { data } = useProfileQuery({});
+  const { options, total, name } = useAppSelector(
+    (state) => state.addToCart
+  ) as any;
   const [contact, setContact] = useState(data?.contact_no);
-  const [name, setName] = useState(data?.first_name + " " + data?.last_name);
+  const [fullName, setFullName] = useState(
+    data?.first_name + " " + data?.last_name
+  );
   const [house, setHouse] = useState("");
   const [road, setRoad] = useState("");
   const [ward, setWard] = useState("");
   const [block, setBlock] = useState("");
   const [others, setOthers] = useState("");
   const [note, setNote] = useState(" ");
-  const { summary } = useAppSelector((state) => state.addToCart);
   const router = useRouter();
   const handleScheduleModalClose = () => {
     setIsScheduleModalOpen(false);
@@ -71,7 +74,7 @@ export default function CheckoutPage() {
   const handleContactModalClose = () => {
     setIsContactModalOpen(false);
     setContact(data.contact_no);
-    setName(data.first_name + " " + data.last_name);
+    setFullName(data.first_name + " " + data.last_name);
   };
   const handleOk = () => {
     setIsScheduleModalOpen(false);
@@ -96,7 +99,7 @@ export default function CheckoutPage() {
     setTime(timeString);
   };
   const onNameChange = (e: any) => {
-    setName(e.target.value);
+    setFullName(e.target.value);
   };
   const onContactChange = (e: any) => {
     setContact(e.target.value);
@@ -105,6 +108,7 @@ export default function CheckoutPage() {
     setNote(e.target.value);
   };
   const handlePlaceOrder = async () => {
+    console.log(total);
     if (
       house === "" ||
       road === "" ||
@@ -113,44 +117,32 @@ export default function CheckoutPage() {
       block === ""
     )
       message.error("Full Address Required");
-    else {
+    else if (!contact) message.error("Contact Required");
+    else if (total === 0) {
+      message.error("No service selected");
+      router.push("/");
+    } else {
       let service_details: string = "";
-      summary.items.map((item: any) => {
-        service_details += `${item?.title} x${item?.quantity}, `;
+      options.map((item: any) => {
+        if (item?.quantity > 0)
+          service_details += `${item?.name} x${item?.quantity}, `;
       });
       const res: any = await placeOrder({
         delivery_time: time + ", " + day + " " + month + " " + year,
-        service: summary.name,
+        service: name,
         contact: contact,
         address:
           house + " , " + road + " , " + block + " , " + ward + " , " + others,
         order_details: service_details,
-        subtotal: summary.subtotal,
+        subtotal: total,
         delivery_fee: 100,
-        total_amount: summary.subtotal + 100,
+        total_amount: total + 100,
         note: note,
       }).unwrap();
 
       if (res) {
-        const url: any = await initPayment({
-          amount: summary.subtotal + 100,
-          transactionId: contact + "" + summary.subtotal + "01",
-          customerName: data.first_name + " " + data.last_name,
-          customerEmail: data.email,
-          address:
-            house +
-            " , " +
-            road +
-            " , " +
-            block +
-            " , " +
-            ward +
-            " , " +
-            others,
-          phone: data.contact,
-        });
-        if (url.data) window.open(url.data);
-        else message.error("Something went Wrong. Try Again");
+        message.success("Order Placed");
+        router.push("/checkout/success");
       }
     }
   };
@@ -228,8 +220,10 @@ export default function CheckoutPage() {
             </div>
             <p className="sub">Expert will contact with the following person</p>
             <div className="name-and-number">
-              <p style={{ color: "grey" }}>{name}</p>
-              <p style={{ color: "grey" }}>{contact}</p>
+              <p style={{ color: "grey" }}>{fullName}</p>
+              <p style={{ color: "grey" }}>
+                {contact ? contact : "Contact Number"}
+              </p>
               <button
                 className="change-btn"
                 onClick={() => setIsContactModalOpen(true)}
@@ -347,11 +341,11 @@ export default function CheckoutPage() {
             <p className="sub">
               Our service provider will call you to confirm the service
             </p>
-            <p>{summary.name}</p>
+            <p>{name}</p>
             <ul>
-              {summary.items.map((item: any) => (
-                <li key={item.title}>
-                  {item?.title} x{item?.quantity}
+              {options.map((item: any) => (
+                <li key={item.name}>
+                  {item?.name} x{item?.quantity}
                 </li>
               ))}
             </ul>
@@ -360,13 +354,13 @@ export default function CheckoutPage() {
         <div className="order-summary">
           <p className="order-heading">Order Summary</p>
           <p style={{ fontWeight: "bold" }}>House Shifting</p>
-          {summary.items.map((item: any) => (
-            <div className="price-details" key={item.title}>
+          {options.map((item: any) => (
+            <div className="price-details" key={item.name}>
               <p>
-                {item?.title} x{item?.quantity}
+                {item?.name} x{item?.quantity}
               </p>
               <p className="price">
-                {item.price}
+                {item?.price}
                 {""}
                 <span style={{ fontSize: "1.8vw", fontWeight: "bold" }}>
                   &#2547;
@@ -375,9 +369,9 @@ export default function CheckoutPage() {
             </div>
           ))}
           <div className="subtotal">
-            <p>subtotal</p>
+            <p>Subtotal</p>
             <p className="price">
-              {summary.subtotal}
+              {total}
               {""}
               <span style={{ fontSize: "1.8vw", fontWeight: "bold" }}>
                 &#2547;
@@ -399,7 +393,7 @@ export default function CheckoutPage() {
           >
             <p style={{ fontWeight: "bold" }}>Amount to be paid</p>
             <p className="price">
-              {summary.subtotal + 100}
+              {total + 100}
               {""}
               <span style={{ fontSize: "1.8vw", fontWeight: "bold" }}>
                 &#2547;

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { Button, Space, Table, Tag, message } from "antd";
+import { Button, Space, Spin, Table, Tag, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { OrderTableDataType } from "@/types";
 import OrderTable from "@/components/ui/OrderTable";
@@ -12,16 +12,16 @@ import {
 let colors = ["geekblue", "green", "volcano"];
 
 export default function MangeOrders() {
-  const [trigger, { data }] = useLazyGetOrdersQuery({});
+  const [trigger, { data, isLoading }] = useLazyGetOrdersQuery({});
   const [deleteOrder] = useDeleteOrderMutation();
   const columns: ColumnsType<OrderTableDataType> = [
     {
       title: "Name",
-      dataIndex: "user",
+      dataIndex: "customer",
       key: "first_name",
       render: (text) => (
-        <p style={{ color: "cadetblue", fontWeight: "bold" }}>
-          {Object.values(text)[1] as string}
+        <p style={{ color: "#1D94A4", fontWeight: "bold" }}>
+          {text.first_name}
         </p>
       ),
     },
@@ -54,7 +54,7 @@ export default function MangeOrders() {
     {
       title: "Action",
       key: "action",
-      dataIndex: "id",
+      dataIndex: "_id",
       render: (text) => (
         <Button
           type="primary"
@@ -78,7 +78,19 @@ export default function MangeOrders() {
   useEffect(() => {
     trigger({});
   }, []);
-  console.log(data);
+  if (isLoading)
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <Spin></Spin>
+      </div>
+    );
   return (
     <>
       <OrderTable columns={columns} data={data} />

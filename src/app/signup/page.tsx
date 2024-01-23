@@ -29,7 +29,6 @@ const SignupPage = () => {
       const { confirmPassword, ...rest } = data;
 
       const res = await userSignup({ ...rest, role: "customer" }).unwrap();
-
       if (res) {
         router.push("/login");
         message.success("User created successfully!");
@@ -137,6 +136,7 @@ const SignupPage = () => {
                   fontSize: "20px",
                   marginTop: "20px",
                   marginBottom: "20px",
+                  backgroundColor: "#1D94A4",
                 }}
               >
                 Create Account

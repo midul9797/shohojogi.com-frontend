@@ -5,7 +5,13 @@ export default function HowItWorks({ image, width = "90%" }: any) {
   return (
     <div className="how-it-works" style={{ width: width }}>
       <p style={{ marginTop: "3vw", fontSize: "1.2vw" }}>HOW IT WORKS</p>
-      <Image src={image} alt="How it works image" style={{ width: "40vw" }} />
+      <Image
+        src={image}
+        width={300}
+        height={300}
+        alt="How it works image"
+        style={{ width: "40vw" }}
+      />
       <div className="how-it-works-details">
         <p style={{ fontSize: "2.1vw", fontWeight: "bold" }}>
           Hassel Free <span className="gradient-span"> Service Request </span>

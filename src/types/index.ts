@@ -25,3 +25,7 @@ export interface OrderTableDataType {
   address: string;
   services: string[];
 }
+export interface ServiceTableDataType {
+  key: string;
+  name: string;
+}

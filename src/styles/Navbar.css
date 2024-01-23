@@ -20,16 +20,17 @@
 }
 
 .navbar-items{
-    width: 25%;
+    width: 30%;
     font-size: 1.2vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: #333333;
+    font-weight: bold;
 }
 .all-services{
     cursor: pointer;
 }
 .navbar-item:hover, .all-services:hover{
-    color: green
+    color: #1D94A4;
 }

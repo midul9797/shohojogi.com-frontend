@@ -1,19 +1,23 @@
 "use client";
-import { UserOutlined } from "@ant-design/icons";
+import { ProfileFilled, UserOutlined } from "@ant-design/icons";
 import { Dropdown, Avatar, Button, message } from "antd";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
 import "@/styles/Navbar.css";
 import { isLoggedIn, removeUserInfo } from "@/service/auth.service";
-import { useProfileQuery } from "@/redux/api/profileApi";
+import { useLazyProfileQuery, useProfileQuery } from "@/redux/api/profileApi";
+import { useGetServicesQuery } from "@/redux/api/serviceApi";
+import ButtonPrimary from "./ButtonPrimary";
 export default function Navbar() {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const { data } = useProfileQuery({});
+  const [trigger, { data }] = useLazyProfileQuery({});
+  const allServices = useGetServicesQuery({});
 
   useEffect(() => {
     setLoggedIn(isLoggedIn());
   }, []);
+  console.log(data);
   const profileItems: MenuProps["items"] = [
     {
       label: (
@@ -47,49 +51,23 @@ export default function Navbar() {
       key: "3",
     },
   ];
-  const serviceItems: MenuProps["items"] = [
-    {
-      key: "1",
+  const serviceItems: MenuProps["items"] = [];
+  allServices.data?.map((item: any, idx: number) => {
+    serviceItems.push({
+      key: idx,
       label: (
-        <Link href="/services/house-shifting" style={{ fontSize: "1vw" }}>
-          House Shifting
+        <Link
+          href={`/services/${item?.route_name}`}
+          style={{ fontSize: "1vw" }}
+        >
+          {item?.name}
         </Link>
       ),
-    },
-    {
-      key: "2",
-      label: (
-        <Link href="/services/home-cleaning" style={{ fontSize: "1vw" }}>
-          Home Cleaning
-        </Link>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <Link href="/services/plumbing" style={{ fontSize: "1vw" }}>
-          Plumbing
-        </Link>
-      ),
-    },
-    {
-      key: "4",
-      label: (
-        <Link href="/services/home-appliance" style={{ fontSize: "1vw" }}>
-          Home Appliance
-        </Link>
-      ),
-    },
-    {
-      key: "5",
-      label: (
-        <Link href="/services/electrician" style={{ fontSize: "1vw" }}>
-          Electrician
-        </Link>
-      ),
-    },
-  ];
-
+    });
+  });
+  useEffect(() => {
+    trigger({});
+  }, [trigger]);
   return (
     <div className="navbar">
       <Link href={"/"} className="navbar-logo">
@@ -107,7 +85,7 @@ export default function Navbar() {
               <Avatar
                 size="large"
                 style={{ cursor: "pointer" }}
-                icon={<UserOutlined />}
+                src={data?.profileImg || <UserOutlined />}
                 onClick={(e) => e?.preventDefault()}
               />
             </a>
@@ -117,6 +95,8 @@ export default function Navbar() {
             style={{
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
+              gap: "20px",
               width: "50%",
             }}
           >
@@ -124,7 +104,7 @@ export default function Navbar() {
               LOGIN
             </Link>
             <Link href={"/signup"} className="navbar-item">
-              SIGN UP
+              <ButtonPrimary text="SIGN UP"></ButtonPrimary>
             </Link>
           </div>
         )}

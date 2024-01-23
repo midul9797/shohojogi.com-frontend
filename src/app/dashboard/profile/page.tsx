@@ -1,165 +1,178 @@
 "use client";
 import UploadImage from "@/components/ui/UploadImage";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../../styles/Profile.css";
-import { HomeOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
+import { Button, Spin, message } from "antd";
 import {
-  useProfileQuery,
+  useLazyProfileQuery,
   useUpdateProfileMutation,
 } from "@/redux/api/profileApi";
+import Form from "@/components/Forms/Form";
+import FormInput from "@/components/Forms/FormInput";
 export default function Profile() {
-  const { data } = useProfileQuery({}) as any;
-  const [updateProfile] = useUpdateProfileMutation();
+  const [trigger, { data, isLoading, isFetching }] = useLazyProfileQuery({});
+  const [updateProfile, { isLoading: saving }] = useUpdateProfileMutation();
+  const handleSubmit = async (values: any) => {
+    Object.keys(values).forEach(
+      (key) => values[key] === undefined && delete values[key]
+    );
+    Object.keys(values.address).forEach(
+      (key) => values.address[key] === undefined && delete values.address[key]
+    );
+    if (values.address && data.address) {
+      let address = { ...data.address };
+      Object.keys(values.address).forEach(
+        (key) => (address[key] = values.address[key])
+      );
+      values.address = address;
+    }
+    const res: any = await updateProfile({ ...values });
+    if (res?.data?.email) {
+      message.success("Saved");
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const res: any = await updateProfile({
-      first_name: e.target.firstName.value,
-      last_name: e.target.lastName.value,
-      contactNo: e.target.contactNumber.value,
-      address: {
-        house: e.target.house.value,
-        road: e.target.road.value,
-        ward: e.target.ward.value,
-        block: e.target.block.value,
-        zip: e.target.zipCode.value,
-        city: e.target.city.value,
-      },
-    });
-    console.log({
-      first_name: e.target.firstName.value,
-      last_name: e.target.lastName.value,
-      contactNo: e.target.contactNumber.value,
-      address: {
-        house: e.target.house.value,
-        road: e.target.road.value,
-        ward: e.target.ward.value,
-        zip: e.target.zipCode.value,
-        city: e.target.city.value,
-      },
-    });
-    if (res?.data?.id) message.success("Saved");
-    else message.error("failed to save");
+      trigger({});
+    } else message.error("failed to save");
   };
+  useEffect(() => {
+    if (saving) message.info("Saving...");
+  }, [saving]);
+  useEffect(() => {
+    trigger({});
+  }, []);
+
   return (
-    <div className="profile-page">
-      <form className="edit-profile" onSubmit={handleSubmit}>
-        <p style={{ fontSize: "2vw", fontWeight: "bold", marginBottom: "2vw" }}>
-          Edit Profile
-        </p>
-        <div className="edit-profile-inputs">
-          <div className="edit-profile-input">
-            <p>First Name</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="firstName"
-              defaultValue={data?.first_name}
-            />
-          </div>
-          <div className="edit-profile-input">
-            <p>Last Name</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="lastName"
-              defaultValue={data?.last_name}
-            />
-          </div>
-        </div>
+    <Form submitHandler={handleSubmit}>
+      <div className="profile-page">
         <div>
-          <div className="edit-profile-input">
-            <p>Email</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="email"
-              value={data?.email}
-            />
-          </div>
-        </div>{" "}
-        <div>
-          <div className="edit-profile-input">
-            <p>Contact Number</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="contactNumber"
-              defaultValue={data?.contactNo}
-            />
-          </div>
+          <p
+            style={{ fontSize: "2vw", fontWeight: "bold", marginBottom: "2vw" }}
+          >
+            Edit Profile
+          </p>
+          {isLoading || data === undefined || isFetching ? (
+            <>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "50vh",
+                }}
+              >
+                <Spin></Spin>
+              </div>
+
+              <br />
+            </>
+          ) : (
+            <>
+              <div className="edit-profile-inputs">
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    name="first_name"
+                    label="First Name"
+                    defaultValue={data?.first_name}
+                  />
+                </div>
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    name="last_name"
+                    label="Last Name"
+                    defaultValue={data?.last_name}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    name="email"
+                    label="Email"
+                    value={data?.email}
+                  />
+                </div>
+              </div>{" "}
+              <div>
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    label="Contact Number"
+                    name="contactNo"
+                    defaultValue={data?.contactNo}
+                  />
+                </div>
+              </div>
+              <div className="edit-profile-inputs">
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    label="House"
+                    name="address.house"
+                    defaultValue={data?.address?.house}
+                  />
+                </div>
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    label="Road"
+                    name="address.road"
+                    defaultValue={data?.address?.road}
+                  />
+                </div>
+              </div>
+              <div className="edit-profile-inputs">
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    label="Block"
+                    name="address.block"
+                    defaultValue={data?.address?.block}
+                  />
+                </div>
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    label="Ward"
+                    name="address.ward"
+                    defaultValue={data?.address?.ward}
+                  />
+                </div>
+              </div>
+              <div className="edit-profile-inputs">
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="number"
+                    label="Zip Code"
+                    name="address.zip"
+                    defaultValue={data?.address?.zip}
+                  />
+                </div>
+                <div className="edit-profile-input">
+                  <FormInput
+                    type="text"
+                    label="City"
+                    name="address.city"
+                    defaultValue={data?.address?.city}
+                  />
+                </div>
+              </div>
+            </>
+          )}
+          <Button
+            disabled={saving}
+            type="primary"
+            style={{ margin: "1vw" }}
+            htmlType="submit"
+            className="save-btn"
+          >
+            {saving ? <LoadingOutlined /> : "Save"}
+          </Button>
         </div>
-        <div className="edit-profile-inputs">
-          <div className="edit-profile-input">
-            <p>House No./Name</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="house"
-              defaultValue={data?.address?.house}
-            />
-          </div>
-          <div className="edit-profile-input">
-            <p>Road No./Name</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="road"
-              defaultValue={data?.address?.road}
-            />
-          </div>
-        </div>
-        <div className="edit-profile-inputs">
-          <div className="edit-profile-input">
-            <p>Block</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="block"
-              defaultValue={data?.address?.block}
-            />
-          </div>
-          <div className="edit-profile-input">
-            <p>Ward No.</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="ward"
-              defaultValue={data?.address?.ward}
-            />
-          </div>
-        </div>
-        <div className="edit-profile-inputs">
-          <div className="edit-profile-input">
-            <p>Zip Code</p>
-            <input
-              type="number"
-              className="edit-profile-input-field"
-              name="zipCode"
-              defaultValue={data?.address?.zip}
-            />
-          </div>
-          <div className="edit-profile-input">
-            <p>City</p>
-            <input
-              type="text"
-              className="edit-profile-input-field"
-              name="city"
-              defaultValue={data?.address?.city}
-            />
-          </div>
-        </div>
-        <Button
-          type="primary"
-          style={{ margin: "1vw" }}
-          htmlType="submit"
-          className="save-btn"
-        >
-          Save
-        </Button>
-      </form>
-      <UploadImage name="Midul"></UploadImage>
-    </div>
+        <UploadImage name="profileImg"></UploadImage>
+      </div>
+    </Form>
   );
 }

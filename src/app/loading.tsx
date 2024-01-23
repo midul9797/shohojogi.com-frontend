@@ -11,6 +11,7 @@ function Loading() {
         alignItems: "center",
         height: "100vh",
         width: "100vw",
+        overflowX: "hidden",
       }}
     >
       <Lottie

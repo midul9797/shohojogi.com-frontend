@@ -1,5 +1,6 @@
 import type { MenuProps } from "antd";
 import {
+  DatabaseOutlined,
   ProfileOutlined,
   SolutionOutlined,
   TableOutlined,
@@ -45,6 +46,37 @@ export const sidebarItems = (role: string) => {
       ),
       icon: <SolutionOutlined />,
       key: `/dashboard/${role}/make-admin`,
+    },
+
+    {
+      label: <p style={{ fontSize: "1vw" }}>Manage Services</p>,
+      icon: <DatabaseOutlined />,
+      key: `/dashboard/${role}/manage-services`,
+      children: [
+        {
+          label: (
+            <Link
+              href={`/dashboard/${role}/add-service`}
+              style={{ fontSize: "1vw" }}
+            >
+              Add Service
+            </Link>
+          ),
+          key: `/dashboard/${role}/add-service`,
+        },
+        {
+          label: (
+            <Link
+              href={`/dashboard/${role}/all-services`}
+              style={{ fontSize: "1vw" }}
+            >
+              All Services
+            </Link>
+          ),
+
+          key: `/dashboard/${role}/all-services`,
+        },
+      ],
     },
   ];
   const commonUserSidebarItems: MenuProps["items"] = [

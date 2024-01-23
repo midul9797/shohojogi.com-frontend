@@ -34,17 +34,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: cadetblue;
+    background: #1D94A4;
 }
 .add-input{
     width: 50px;
-    border: 1px solid cadetblue;
+    border: 1px solid #1D94A4;
     text-align: center;
 }
 .price-section{
     margin-top: 2vw;
     display: flex;
-    justify-content: space-between;
+    
     align-items: center;
     flex-direction: column;
 }
@@ -53,7 +53,7 @@
     height: 60vh;
     overflow-y: scroll;
     padding-left: 2vw;
-    border-left: 1px solid cadetblue;
+    border-left: 1px solid #1D94A4;
     font-size: 1.2vw;
 }
 .single-price{
@@ -74,7 +74,8 @@
 }
 .check-out-btn{
     width: 30vw;
-    background-color: cadetblue;
+    margin-bottom: 20px;
+    background-color: #1D94A4;
     padding: 1.2vw 2vw;
     color: white;
     display: flex;
