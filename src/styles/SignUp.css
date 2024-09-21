@@ -1,0 +1,50 @@
+.logo {
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: bold;
+  margin: clamp(1rem, 2vw, 2rem);
+}
+
+.signup-title {
+  margin: 10px 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.signup-subtitle {
+  font-size: clamp(0.875rem, 2vw, 1rem) !important;
+  margin-bottom: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin: clamp(0.5rem, 3vw, 1rem);
+  }
+
+  .signup-title {
+    margin: 10px 0;
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .signup-subtitle {
+    font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important;
+  }
+  .signup-image {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: clamp(1rem, 4.5vw, 1.5rem);
+    margin: clamp(0.25rem, 4vw, 0.75rem);
+  }
+
+  .signup-title {
+    margin: 8px 0;
+    font-size: clamp(1.25rem, 6.5vw, 1.75rem);
+  }
+
+  .signup-subtitle {
+    font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
+  }
+}

@@ -87,16 +87,19 @@ export default function CheckoutPage() {
     else if (name === "block") setBlock(e.target.value);
     else setOthers(e.target.value);
   };
-  const onDateChange: DatePickerProps["onChange"] = (date, dateString) => {
-    const d = dateString.split("-");
+  const onDateChange: DatePickerProps["onChange"] = (
+    date: Dayjs | null,
+    dateString: string | string[]
+  ) => {
+    const d = typeof dateString === "string" ? dateString.split("-") : [];
     if (d.length >= 0) {
       setDay(parseInt(d[0]));
       setMonth(monthNames[parseInt(d[1]) - 1]);
       setYear(parseInt(d[2]));
     }
   };
-  const onTimeChange = (time: Dayjs | null, timeString: string) => {
-    setTime(timeString);
+  const onTimeChange = (time: Dayjs | null, dateString: string | string[]) => {
+    setTime(Array.isArray(dateString) ? dateString[0] : dateString);
   };
   const onNameChange = (e: any) => {
     setFullName(e.target.value);
@@ -206,7 +209,15 @@ export default function CheckoutPage() {
                       changeOnBlur={true}
                       use12Hours
                       format="h:mm a"
-                      onChange={onTimeChange}
+                      onChange={(
+                        time: Dayjs,
+                        dateString: string | string[]
+                      ) => {
+                        onTimeChange(
+                          time,
+                          Array.isArray(dateString) ? dateString[0] : dateString
+                        );
+                      }}
                     />
                   </div>
                 </div>

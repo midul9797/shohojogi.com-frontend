@@ -1,14 +1,9 @@
 "use client";
 
-import CountUp, { useCountUp } from "react-countup";
+import CountUp from "react-countup";
 import React, { Suspense } from "react";
-import { Input, Button, MenuProps, Skeleton } from "antd";
 import Image from "next/image";
 import HomeBanner from "../../../assets/home-banner.svg";
-import HomeCleaning from "../../../assets/home-cleaning.svg";
-import HouseShifting from "../../../assets/house-shifting.svg";
-import ApplianceServicing from "../../../assets/appliance-repair.svg";
-import Plumbing from "../../../assets/plumbing.svg";
 import Support from "../../../assets/support.svg";
 import Safe from "../../../assets/safe.svg";
 import Glove from "../../../assets/gloves.svg";
@@ -16,7 +11,6 @@ import Mask from "../../../assets/mask.svg";
 import WhyChooseUsBanner from "../../../assets/why-choose-use-banner.svg";
 import HowItWorksBanner from "../../../assets/how-it-works-1.svg";
 import "@/styles/HomePage.css";
-import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import HowItWorks from "@/components/ui/HowItWorks";
 import Reveal from "@/components/ui/Reveal";
@@ -44,13 +38,6 @@ export default function HomePage() {
                 One Destination. Infinite Services. Order On Demand
               </p>
             </Reveal>
-
-            {/* <Reveal>
-            <Input className="search-field" placeholder="Find your service" />
-          </Reveal>
-          <Button type="primary" className="search_btn">
-            <SearchOutlined color="white" />
-          </Button> */}
           </div>
           <Reveal width="fit-content">
             <div className="home-banner">
@@ -62,12 +49,12 @@ export default function HomePage() {
           <span
             className="gradient-span"
             style={{
-              fontSize: "3vw",
+              fontSize: "clamp(1.5rem, 3vw, 3rem)",
               textAlign: "center",
               display: "block",
               fontWeight: "bold",
               margin: "3vw",
-              width: "100vw",
+              width: "100%",
             }}
           >
             Top Services
@@ -89,7 +76,7 @@ export default function HomePage() {
                     />
                     <p
                       style={{
-                        fontSize: "1.5vw",
+                        fontSize: "clamp(0.8rem, 1.5vw, 1.5rem)",
                         fontWeight: "bold",
                         width: "120%",
                       }}
@@ -104,12 +91,19 @@ export default function HomePage() {
         <Reveal>
           <div className="why-choose-us">
             <div className="why-choose-us-left">
-              <p style={{ color: "#031E17", fontSize: "1vw" }}>WHY CHOOSE US</p>
+              <p
+                style={{
+                  color: "#031E17",
+                  fontSize: "clamp(0.8rem, 1vw, 1rem)",
+                }}
+              >
+                WHY CHOOSE US
+              </p>
               <br />
               <p
                 style={{
                   fontWeight: "bold",
-                  fontSize: "3vw",
+                  fontSize: "clamp(1.5rem, 3vw, 3rem)",
                   margin: "0 0 2.5vw 0",
                 }}
               >
@@ -117,8 +111,9 @@ export default function HomePage() {
               </p>
               <div
                 style={{
-                  width: "120%",
+                  width: "100%",
                   display: "flex",
+                  flexWrap: "wrap",
                   justifyContent: "flex-start",
                   alignItems: "center",
                 }}
@@ -128,8 +123,8 @@ export default function HomePage() {
                     <Image
                       src={Support}
                       style={{
-                        width: "5vw",
-                        height: "5vw",
+                        width: "clamp(2rem, 5vw, 5rem)",
+                        height: "clamp(2rem, 5vw, 5rem)",
                         marginRight: "2vw",
                       }}
                       alt="24h Support"
@@ -140,8 +135,8 @@ export default function HomePage() {
                     <Image
                       src={Mask}
                       style={{
-                        width: "5vw",
-                        height: "5vw",
+                        width: "clamp(2rem, 5vw, 5rem)",
+                        height: "clamp(2rem, 5vw, 5rem)",
                         marginRight: "2vw",
                       }}
                       alt="Masking"
@@ -154,8 +149,8 @@ export default function HomePage() {
                     <Image
                       src={Safe}
                       style={{
-                        width: "5vw",
-                        height: "5vw",
+                        width: "clamp(2rem, 5vw, 5rem)",
+                        height: "clamp(2rem, 5vw, 5rem)",
                         marginRight: "2vw",
                       }}
                       alt="Sanitizing"
@@ -166,8 +161,8 @@ export default function HomePage() {
                     <Image
                       src={Glove}
                       style={{
-                        width: "5vw",
-                        height: "5vw",
+                        width: "clamp(2rem, 5vw, 5rem)",
+                        height: "clamp(2rem, 5vw, 5rem)",
                         marginRight: "2vw",
                       }}
                       alt="Glove Assurance"
@@ -184,19 +179,28 @@ export default function HomePage() {
         </Reveal>
         <div className="records">
           <div>
-            <span style={{ fontSize: "4vw" }} className="gradient-span">
+            <span
+              style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}
+              className="gradient-span"
+            >
               <CountUp end={10000} duration={2} suffix="+" enableScrollSpy />
             </span>
             <p>Service Professionals</p>
           </div>
           <div>
-            <span style={{ fontSize: "4vw" }} className="gradient-span">
+            <span
+              style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}
+              className="gradient-span"
+            >
               <CountUp end={300000} duration={2} suffix="+" enableScrollSpy />
             </span>
             <p>Order Placed</p>
           </div>
           <div>
-            <span style={{ fontSize: "4vw" }} className="gradient-span">
+            <span
+              style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}
+              className="gradient-span"
+            >
               <CountUp end={100000} duration={2} suffix="+" enableScrollSpy />
             </span>
             <p>5 Star Received</p>

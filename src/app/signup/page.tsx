@@ -7,12 +7,11 @@ import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import theme from "@/utils/theme/theme";
 import Link from "next/link";
-import logo from "@/assets/logo.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signupSchema } from "@/schemas/signup";
 import { useUserSignupMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
-
+import "@/styles/SignUp.css";
 type FormValues = {
   first_name: string;
   last_name: string;
@@ -40,15 +39,7 @@ const SignupPage = () => {
   return (
     <ConfigProvider theme={theme}>
       <Link href={"/"}>
-        <p
-          style={{
-            margin: "2vw 0 1vw 2vw",
-            fontSize: "1.5vw",
-            fontWeight: "bold",
-          }}
-        >
-          SHOHOJOGI.COM
-        </p>
+        <p className="logo">SHOHOJOGI.COM</p>
       </Link>
       <Row
         justify="center"
@@ -57,19 +48,18 @@ const SignupPage = () => {
           minHeight: "70vh",
         }}
       >
-        <Col sm={12} md={16} lg={10}>
-          <Image src={signupImage} width={350} alt="login image" />
+        <Col lg={10}>
+          <Image
+            src={signupImage}
+            width={450}
+            alt="login image"
+            className="signup-image"
+          />
         </Col>
-        <Col sm={12} md={8} lg={8}>
-          <h1
-            style={{
-              margin: "15px 0px",
-              fontSize: "32px",
-            }}
-          >
-            Join Us Today!
-          </h1>
-          <Typography.Text type="secondary">
+        <Col lg={8} style={{ margin: "0 20px" }}>
+          <h1 className="signup-title">Join Us Today!</h1>
+
+          <Typography.Text type="secondary" className="signup-subtitle">
             Sign up now to become part of our family
           </Typography.Text>
           <div>

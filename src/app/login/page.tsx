@@ -21,6 +21,7 @@ import { loginSchema } from "@/schemas/login";
 import { storeUserInfo } from "@/service/auth.service";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
+import "../../styles/Login.css";
 type FormValues = {
   email: string;
   password: string;
@@ -47,9 +48,7 @@ const LoginPage = () => {
   return (
     <ConfigProvider theme={theme}>
       <Link href={"/"}>
-        <p style={{ fontSize: "1.5vw", margin: "2vw", fontWeight: "bold" }}>
-          SHOHOJOGI.COM
-        </p>
+        <p className="logo">SHOHOJOGI.COM</p>
       </Link>
       <Row
         justify="center"
@@ -58,19 +57,18 @@ const LoginPage = () => {
           minHeight: "80vh",
         }}
       >
-        <Col sm={12} md={16} lg={10}>
-          <Image src={loginImage} width={400} alt="login image" />
+        <Col sm={0} md={12} lg={10} className="login-image-container">
+          <Image
+            src={loginImage}
+            width={600}
+            alt="login image"
+            className="login-image"
+          />
         </Col>
         <Col sm={12} md={8} lg={8}>
-          <h1
-            style={{
-              margin: "15px 0px",
-              fontSize: "32px",
-            }}
-          >
-            Welcome Back!
-          </h1>
-          <Typography.Title type="secondary" style={{ fontSize: "16px" }}>
+          <h1 className="login-title">Welcome Back!</h1>
+
+          <Typography.Title type="secondary" className="login-subtitle">
             Login to access your account
           </Typography.Title>
           <div>

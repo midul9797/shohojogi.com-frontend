@@ -91,15 +91,7 @@ export default function Navbar() {
             </a>
           </Dropdown>
         ) : (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "20px",
-              width: "50%",
-            }}
-          >
+          <div className="navbar-login-signup">
             <Link href={"/login"} className="navbar-item">
               LOGIN
             </Link>

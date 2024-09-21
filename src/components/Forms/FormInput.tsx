@@ -36,7 +36,7 @@ const FormInput = ({
 
   return (
     <>
-      <p style={{ padding: "8px 0px 5px 5px", fontSize: "1.2vw" }}>
+      <p className="form-input-label">
         {label ? label : null}{" "}
         {required ? (
           <span
@@ -59,12 +59,7 @@ const FormInput = ({
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
-              style={{
-                fontSize: "1.2vw",
-                padding: "6px 12px",
-                display: "flex",
-                alignItems: "center",
-              }}
+              className="form-input-password"
             />
           ) : (
             <Input
@@ -74,12 +69,7 @@ const FormInput = ({
               {...field}
               value={value ? value : field.value}
               defaultValue={defaultValue ? defaultValue : ""}
-              style={{
-                fontSize: "1.2vw",
-                padding: "6px 12px",
-                display: "flex",
-                alignItems: "center",
-              }}
+              className="form-input-text"
             />
           )
         }

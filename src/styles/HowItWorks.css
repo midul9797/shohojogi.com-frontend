@@ -1,32 +1,115 @@
-.how-it-works
-{
-    margin: 7vw auto;
-    display: flex;
-    justify-content: center;
-    background-color: #F0FFFE;
-    padding: 3vw;
+.how-it-works {
+  margin: 7vw auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0fffe;
+  padding: 3vw;
 }
-.how-it-works-details{
-    margin:auto
+.how-it-works-title {
+  margin-top: 3vw;
+  font-size: 1.2vw;
+  height: 40vw;
+  display: flex;
+  align-items: start;
 }
-.how-it-works-detail
-{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 2vw;
+
+.how-it-works-details-title {
+  font-size: clamp(1.5rem, 2.1vw, 2.5rem);
+  font-weight: bold;
+  margin-bottom: clamp(1rem, 2vw, 2.5rem);
 }
-.how-it-works-detail-number
-{
-    width: 3vw;
+
+.how-it-works-detail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2vw;
+}
+
+.how-it-works-detail-title {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.how-it-works-detail-number {
+  width: 3vw;
+  height: 3vw;
+  display: flex;
+  margin-right: 1.5vw;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vw;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #92ffc0, #002661);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .how-it-works {
+    margin: 10vw auto;
+    padding: 5vw;
+    flex-direction: column;
+  }
+
+  .how-it-works-detail {
+    margin: 4vw 0;
+  }
+
+  .how-it-works-detail-number {
+    width: 6vw;
+    height: 6vw;
+    margin-right: 3vw;
+    font-size: 3vw;
+  }
+
+  .how-it-works-title {
+    margin-top: 5vw;
+    font-size: 2vw;
+    width: 100%;
+    text-align: left;
     height: 3vw;
-    display: flex;
-    margin-right: 1.5vw;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5vw;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg,#92FFC0,#002661);
-    border-radius: 50%;
+  }
+
+  .how-it-works-details-title {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-bottom: clamp(0.8rem, 3vw, 2rem);
+  }
+
+  .how-it-works-detail-title {
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .how-it-works {
+    margin: 15vw auto;
+    padding: 7vw;
+  }
+
+  .how-it-works-detail {
+    margin: 6vw 0;
+  }
+
+  .how-it-works-detail-number {
+    width: 10vw;
+    height: 10vw;
+    margin-right: 4vw;
+    font-size: 5vw;
+  }
+
+  .how-it-works-title {
+    margin-top: 7vw;
+    font-size: 3vw;
+    height: 4vw;
+  }
+
+  .how-it-works-details-title {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    margin-bottom: clamp(0.6rem, 4vw, 1.5rem);
+  }
+
+  .how-it-works-detail-title {
+    font-size: clamp(0.8rem, 3vw, 1.2rem);
+  }
 }

@@ -1,7 +1,10 @@
 "use client";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
 import React from "react";
 import animatation from "@/assets/loading_shohojogi.json";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+
 function Loading() {
   return (
     <div

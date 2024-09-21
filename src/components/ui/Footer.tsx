@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-details">
-        <p style={{ fontSize: "3vw", fontWeight: "bold" }}>
+        <p style={{ fontWeight: "bold" }}>
           Get In Touch
           <br /> With Us.
         </p>
