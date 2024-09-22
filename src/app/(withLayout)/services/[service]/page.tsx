@@ -38,7 +38,7 @@ export default function ServicePage({
           <div className="service-details">
             <Breadcrumb
               separator=" "
-              style={{ fontSize: "1.3vw" }}
+              style={{ fontSize: "clamp(14px, 1.3vw, 20px)" }}
               items={[
                 {
                   title: "• Home",
@@ -49,7 +49,7 @@ export default function ServicePage({
                 },
               ]}
             />
-            <p style={{ fontSize: "3vw", fontWeight: "bold" }}>
+            <p className="service-details-name">
               {data?.name.trim().split(" ")[0]}{" "}
               <span className="gradient-span">
                 {data?.name.trim().split(" ")[1]}
@@ -76,7 +76,9 @@ export default function ServicePage({
                   <div className="service-details-tagline-checked">
                     <CheckOutlined />
                   </div>
-                  <p style={{ fontSize: "1.3vw" }}>{text}</p>
+                  <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.3vw)" }}>
+                    {text}
+                  </p>
                 </div>
               ))}
             </div>
@@ -114,7 +116,7 @@ export default function ServicePage({
             <a href="#details">Details</a>
           </div>
           <div id="faq">
-            <p style={{ fontSize: "2vw" }}>FAQ</p>
+            <p style={{ fontSize: "clamp(1.25rem, 2vw, 2.5rem)" }}>FAQ</p>
             <Collapse
               defaultActiveKey={["0"]}
               ghost

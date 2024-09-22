@@ -1,117 +1,169 @@
-.checkout-page{
+.checkout-page {
+  padding-top: clamp(60px, 12vw, 120px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.schedule,
+.contact,
+.address,
+.service-detail {
+  border: 1px solid #1d94a4;
+  padding: clamp(10px, 2vw, 20px);
+  margin: clamp(10px, 2vw, 20px) 0;
+  font-size: clamp(14px, 1.6vw, 16px);
+  width: 45vw;
+  max-width: clamp(300px, 60vw, 600px);
+}
+
+.icon-and-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sub {
+  color: grey;
+  font-size: clamp(12px, 1.4vw, 14px);
+  padding: clamp(5px, 1vw, 10px) clamp(7px, 1.5vw, 15px);
+  margin-bottom: clamp(2px, 0.5vw, 5px);
+}
+
+.schedule-time {
+  padding: clamp(5px, 1vw, 10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #1d94a4;
+  font-size: clamp(12px, 1.4vw, 14px);
+}
+
+.icon {
+  color: #1d94a4 !important;
+  font-size: clamp(18px, 2.4vw, 24px);
+  margin-right: clamp(5px, 1vw, 10px);
+}
+
+.change-btn {
+  border-bottom: 2px dotted black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  width: 60px;
+}
+
+.name-and-number,
+.address-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.name-and-number {
+  border: 1px solid #1d94a4;
+  padding: clamp(5px, 1vw, 10px);
+  font-size: clamp(12px, 1.4vw, 14px);
+}
+
+.address-input {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5px, 1vw, 10px);
+  font-size: clamp(12px, 1.4vw, 14px);
+  width: 48%;
+}
+
+.address-input-field {
+  border: 1px solid #1d94a4;
+  padding: clamp(4px, 0.8vw, 8px) clamp(5px, 1vw, 10px);
+  margin-bottom: clamp(5px, 1vw, 10px);
+  border-radius: clamp(2px, 0.5vw, 5px);
+  width: 100%;
+}
+
+.order-summary {
+  border-left: 1px solid #d7d7d7;
+  border-top: none;
+  padding-left: clamp(20px, 4vw, 40px);
+  width: 45vw;
+}
+
+.order-heading {
+  font-size: clamp(18px, 2.4vw, 24px);
+  text-align: center;
+  font-weight: bold;
+}
+
+.price-details,
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-details {
+  font-size: clamp(14px, 1.6vw, 16px);
+  color: grey;
+  margin: clamp(5px, 1vw, 10px) 0;
+}
+
+.subtotal {
+  font-size: clamp(14px, 1.6vw, 16px);
+  margin: clamp(5px, 1vw, 10px) 0;
+}
+
+.price {
+  color: #1d94a4;
+  font-weight: bold;
+}
+
+.terms {
+  font-size: clamp(12px, 1.4vw, 14px);
+  color: grey;
+  margin: clamp(10px, 2vw, 20px) 0;
+}
+
+.message-input-area {
+  width: 100%;
+  height: clamp(100px, 15vw, 150px);
+  border: 1px solid #1d94a4;
+  border-radius: clamp(2px, 0.5vw, 5px);
+  margin: clamp(10px, 2vw, 20px) 0;
+}
+
+.place-order-btn {
+  padding: clamp(10px, 1.5vw, 15px) clamp(20px, 3vw, 30px);
+  font-size: clamp(16px, 1.8vw, 18px);
+  color: white;
+  background-color: #1d94a4;
+  width: 100%;
+  max-width: clamp(200px, 40vw, 400px);
+}
+
+@media (max-width: 768px) {
+  .checkout-page {
     padding-top: 120px;
-    display: flex;
-    justify-content: space-evenly;
-    
-}
-.schedule ,.contact ,.address ,.service-detail{
-    border: 1px solid #1D94A4;
-    padding: 2vw;
-    margin: 2vw;
-    font-size: 1.3vw;
-}
-.icon-and-title{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.sub
-{
-    color: grey;
-    font-size: 1vw;
-    padding: 1vw 1.5vw;
-    margin-bottom: 0.5vw;
-}
-.schedule-time{
-    padding: 1vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #1D94A4;
-    font-size: 1.2vw;
-}
-.icon{
-    color: #1D94A4 !important;
-    font-size: 2vw;
-    margin-right: 0.8vw;
-}
-.change-btn{
-    border-bottom: 2px dotted black;
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
-}
-.name-and-number,.address-inputs {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  }
 
-}
-.name-and-number{
-    justify-content: space-around;
-    
-    border: 1px solid #1D94A4;
-    padding: 0.7vw 0.5vw;
-    font-size: 1.2vw;
-}
-.address-input{
-    display: flex;
+  .order-summary {
+    border-left: none;
+    border-top: 1px solid #d7d7d7;
+    padding-left: 0;
+  }
+
+  .name-and-number,
+  .address-inputs {
     flex-direction: column;
-    gap: 10px;
-    font-size: 1.2vw;
-}
-.address-input-field{
-    border: 1px solid #1D94A4;
-    padding: 3px 10px;
-    margin: 0 1.5vw 1vw 0;
-    border-radius: 5px;
-}
-.order-summary{
-    border-left: 1px solid #d7d7d7;
-    padding-left: 4vw;
-    width: 50vw;
-}
-.order-heading{
-    font-size: 2.5vw;
-    text-align: center;
-    font-weight: bold;
-}
-.price-details,.subtotal{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.price-details{
-    font-size: 1.4vw;
-    color: grey;
-    margin: 0.5vw 2vw;
+    justify-content: flex-start;
+  }
 
-}
-.subtotal{
-    font-size: 1.4vw;
-    margin:0.5vw 2vw; 
-}
-.price{
-    color: #1D94A4;
-    font-weight: bold;
-}
-.terms{
-    font-size: 1.2vw;
-    color: grey;
-    margin: 2vw;
-}
-.message-input-area{
-    width: 40vw;
-    height: 30vh;
-    border: 1px solid #1D94A4;
-    border-radius: 5px;
-    margin: 3vw 0;
-}
-.place-order-btn{
-    padding: 1vw 2vw;
-    font-size: 2vw;
-    color: white;
-    background-color: #1D94A4;
-    width: 40vw;
+  .address-input {
+    width: 100%;
+  }
 }
