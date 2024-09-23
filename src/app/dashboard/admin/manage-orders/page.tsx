@@ -29,16 +29,19 @@ export default function MangeOrders() {
       title: "Contact",
       dataIndex: "contact",
       key: "contact",
+      responsive: ["lg"],
     },
     {
       title: "Service",
       key: "service",
       dataIndex: "service",
+      responsive: ["md"],
     },
     {
       title: "Schedule Time",
       key: "schedule time",
       dataIndex: "delivery_time",
+      responsive: ["md"],
     },
     {
       title: "Amount",
@@ -50,6 +53,7 @@ export default function MangeOrders() {
           <span style={{ fontSize: "20px", fontWeight: "bold" }}>&#2547;</span>
         </p>
       ),
+      responsive: ["lg"],
     },
     {
       title: "Action",

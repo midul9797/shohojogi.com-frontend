@@ -10,9 +10,26 @@
   align-items: center;
   margin-bottom: 7vw;
 }
+.service-details {
+  display: flex;
+
+  flex-direction: column;
+}
 .service-details-name {
   font-size: clamp(1.25rem, 2vw, 2.5rem);
   font-weight: bold;
+}
+.service-details-tagline-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.service-details-tagline {
+  display: flex;
+  margin: 0.5vw;
+  justify-content: center;
+  align-items: center;
 }
 .service-details-tagline-checked {
   width: 20px;

@@ -67,7 +67,6 @@ const UploadImage = ({ name }: ImageUploadProps) => {
     }
   };
   useEffect(() => {
-    console.log(data);
     if (data?.profileImg && name === "profileImg") setImageUrl(data.profileImg);
   }, []);
   const uploadButton = (
@@ -79,7 +78,7 @@ const UploadImage = ({ name }: ImageUploadProps) => {
           src={imageUrl}
           icon={name === "profileImg" ? <UserOutlined /> : <PictureOutlined />}
           shape={"square"}
-          size={75}
+          size={{ md: 40, lg: 64, xl: 80, xxl: 100 }}
         />
       )}
     </div>
@@ -91,6 +90,7 @@ const UploadImage = ({ name }: ImageUploadProps) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          marginBottom: "10px",
         }}
       >
         {name === "profileImg" && loading && <LoadingOutlined />}
@@ -110,12 +110,15 @@ const UploadImage = ({ name }: ImageUploadProps) => {
           action="/api/file"
           beforeUpload={beforeUpload}
           onChange={handleChange}
-          style={{ position: "relative", right: "40px" }}
+          style={{
+            position: "relative",
+            right: "40px",
+          }}
         >
           {name === "profileImg" ? (
             <CameraOutlined
               style={{
-                fontSize: "20px",
+                fontSize: "clamp(12px, 2vw, 24px)",
                 color: "black",
                 position: "relative",
                 right: "25px",

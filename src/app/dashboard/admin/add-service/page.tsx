@@ -30,13 +30,19 @@ export default function AddService() {
   return (
     <div className="profile-page">
       <Form submitHandler={handleSubmit}>
-        <p style={{ fontSize: "2vw", fontWeight: "bold", marginBottom: "2vw" }}>
+        <p
+          style={{
+            fontSize: "clamp(18px, 1.6vw, 32px)",
+            fontWeight: "bold",
+            marginBottom: "clamp(16px, 2vw, 32px)",
+          }}
+        >
           New Service
         </p>
         <div
           style={{
-            padding: "15px",
-            margin: "15px",
+            padding: "clamp(3px, 1vw, 20px)",
+            margin: "clamp(5px, 1vw, 20px)",
           }}
         >
           <div className="">
@@ -45,7 +51,7 @@ export default function AddService() {
               <br />
             </p>
             <FormInput
-              size="small"
+              size="large"
               type="text"
               name="name"
               placeholder="Enter Service Name"
@@ -58,8 +64,8 @@ export default function AddService() {
               justifyContent: "space-evenly",
               alignItems: "center",
               border: "1px solid #d9d9d9",
-              padding: "15px",
-              marginTop: "15px",
+              padding: "clamp(5px, 1vw, 20px)",
+              marginTop: "clamp(10px, 1vw, 20px)",
               borderRadius: "5px",
             }}
           >
@@ -69,10 +75,15 @@ export default function AddService() {
                 flexDirection: "column",
                 justifyContent: "space-around",
                 alignItems: "center",
-                margin: "20px 0",
+                margin: "clamp(5px, 1vw, 20px) 0",
               }}
             >
-              <p style={{ marginBottom: "15px" }}>
+              <p
+                style={{
+                  marginBottom: "clamp(10px, 1vw, 20px)",
+                  fontSize: "clamp(10px, 1vw, 16px)",
+                }}
+              >
                 Thumbnail
                 <br />
               </p>
@@ -84,10 +95,15 @@ export default function AddService() {
                 flexDirection: "column",
                 justifyContent: "space-around",
                 alignItems: "center",
-                margin: "20px 0",
+                margin: "clamp(10px, 1vw, 20px) 0",
               }}
             >
-              <p style={{ marginBottom: "15px" }}>
+              <p
+                style={{
+                  marginBottom: "clamp(10px, 1vw, 20px)",
+                  fontSize: "clamp(10px, 1vw, 16px)",
+                }}
+              >
                 First Banner
                 <br />
               </p>
@@ -100,10 +116,15 @@ export default function AddService() {
                 flexDirection: "column",
                 justifyContent: "space-around",
                 alignItems: "center",
-                margin: "20px 0",
+                margin: "clamp(10px, 1vw, 20px) 0",
               }}
             >
-              <p style={{ marginBottom: "15px" }}>
+              <p
+                style={{
+                  marginBottom: "clamp(10px, 1vw, 20px)",
+                  fontSize: "clamp(10px, 1vw, 16px)",
+                }}
+              >
                 Second Banner
                 <br />
               </p>
@@ -116,8 +137,8 @@ export default function AddService() {
             style={{
               width: "92%",
               border: "1px solid #d9d9d9",
-              padding: "15px",
-              margin: "29px",
+              padding: "clamp(10px, 1vw, 20px)",
+              margin: "clamp(10px, 2vw, 40px)",
               borderRadius: "5px",
             }}
           >
@@ -125,9 +146,8 @@ export default function AddService() {
               style={{
                 textAlign: "center",
                 fontWeight: "bold",
-                fontSize: "16px",
-
-                marginBottom: "10px",
+                fontSize: "clamp(12px, 1vw, 16px)",
+                marginBottom: "clamp(10px, 1vw, 20px)",
               }}
             >
               Taglines
@@ -139,8 +159,8 @@ export default function AddService() {
           style={{
             width: "92%",
             border: "1px solid #d9d9d9",
-            padding: "15px",
-            margin: "29px",
+            padding: "clamp(10px, 1vw, 20px)",
+            margin: "clamp(10px, 2vw, 40px)",
             borderRadius: "5px",
           }}
         >
@@ -148,9 +168,8 @@ export default function AddService() {
             style={{
               textAlign: "center",
               fontWeight: "bold",
-              fontSize: "16px",
-
-              marginBottom: "10px",
+              fontSize: "clamp(12px, 1vw, 16px)",
+              marginBottom: "clamp(10px, 1vw, 20px)",
             }}
           >
             FAQ
@@ -166,8 +185,8 @@ export default function AddService() {
           style={{
             width: "92%",
             border: "1px solid #d9d9d9",
-            padding: "15px",
-            margin: "29px",
+            padding: "clamp(10px, 1vw, 20px)",
+            margin: "clamp(10px, 2vw, 40px)",
             borderRadius: "5px",
           }}
         >
@@ -175,8 +194,8 @@ export default function AddService() {
             style={{
               textAlign: "center",
               fontWeight: "bold",
-              fontSize: "16px",
-              marginBottom: "10px",
+              fontSize: "clamp(12px, 1vw, 16px)",
+              marginBottom: "clamp(10px, 1vw, 20px)",
             }}
           >
             Options
@@ -192,8 +211,8 @@ export default function AddService() {
           style={{
             width: "92%",
             border: "1px solid #d9d9d9",
-            padding: "15px",
-            margin: "29px",
+            padding: "clamp(10px, 1vw, 20px)",
+            margin: "clamp(10px, 2vw, 40px)",
             borderRadius: "5px",
           }}
         >
@@ -201,8 +220,8 @@ export default function AddService() {
             style={{
               textAlign: "center",
               fontWeight: "bold",
-              fontSize: "16px",
-              marginBottom: "10px",
+              fontSize: "clamp(12px, 1vw, 16px)",
+              marginBottom: "clamp(10px, 1vw, 20px)",
             }}
           >
             Service Details
@@ -212,7 +231,7 @@ export default function AddService() {
         <Button
           disabled={creating}
           type="primary"
-          style={{ margin: "1vw" }}
+          style={{ margin: "clamp(10px, 1vw, 20px)" }}
           htmlType="submit"
           className="save-btn"
         >

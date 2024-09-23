@@ -30,6 +30,7 @@
 
   .form-input-password,
   .form-input-text {
+    width: 100%;
     font-size: 12px;
     padding: 3px 6px;
   }

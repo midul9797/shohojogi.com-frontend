@@ -27,8 +27,10 @@ export default function MakeAdmin() {
       }}
     >
       <form onSubmit={(e) => handleCreate(e)}>
-        <p style={{ fontSize: "1.6vw", fontWeight: "bold" }}>Create Admin</p>
-        <p style={{ fontSize: "1vw", color: "grey" }}>
+        <p style={{ fontSize: "clamp(18px, 1.6vw, 32px)", fontWeight: "bold" }}>
+          Create Admin
+        </p>
+        <p style={{ fontSize: "clamp(12px, 1vw, 16px)", color: "grey" }}>
           Enter user email address whom you want to make admin
         </p>
         <input
@@ -36,9 +38,9 @@ export default function MakeAdmin() {
           name="email"
           placeholder="Email"
           style={{
-            width: "300px",
-            marginTop: "2vw",
-            padding: "0.7vw 1vw",
+            width: "clamp(200px, 40vw, 300px)",
+            marginTop: "clamp(16px, 2vw, 32px)",
+            padding: "clamp(7px, 0.7vw, 14px) clamp(10px, 1vw, 20px)",
             border: "1px solid #1D94A4",
           }}
         />
@@ -47,7 +49,7 @@ export default function MakeAdmin() {
             type="primary"
             htmlType="submit"
             style={{
-              margin: "2vw auto",
+              margin: "clamp(16px, 2vw, 32px) auto",
               backgroundColor: "#1D94A4",
             }}
           >

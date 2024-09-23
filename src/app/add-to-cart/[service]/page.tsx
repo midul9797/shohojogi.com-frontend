@@ -53,12 +53,17 @@ export default function AddToCart({ params }: { params: { service: string } }) {
               <p
                 style={{
                   marginLeft: "1vw",
-                  fontSize: "1.2vw",
+                  fontSize: "clamp(0.8rem, 1.2vw, 1.5rem)",
                 }}
               ></p>
             </Link>
           </div>
-          <p style={{ fontWeight: "bold" }}>
+          <p
+            style={{
+              fontWeight: "bold",
+              fontSize: "clamp(0.8rem, 1.2vw, 1.5rem)",
+            }}
+          >
             {data?.options?.length} options available
           </p>
         </div>
@@ -67,23 +72,25 @@ export default function AddToCart({ params }: { params: { service: string } }) {
         <div className="cart-section">
           <div>
             {data?.options?.map((item: any) => (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  width: "45vw",
-                }}
-                key={item.name}
-              >
+              <div className="cart-item" key={item.name}>
                 <div style={{ margin: "2vw" }} key={item.item}>
-                  <p style={{ fontSize: "1.5vw", fontWeight: "bold" }}>
+                  <p
+                    style={{
+                      fontSize: "clamp(0.7rem, 1.5vw, 2rem)",
+                      fontWeight: "bold",
+                    }}
+                  >
                     {item.name}
                   </p>
-                  <p style={{ fontSize: "14px", color: "grey" }}>
+                  <p
+                    style={{
+                      fontSize: "clamp(0.875rem, 1vw, 1.25rem)",
+                      color: "grey",
+                    }}
+                  >
                     <span
                       style={{
-                        fontSize: "16px",
+                        fontSize: "clamp(0.7rem, 1.2vw, 1.5rem)",
                         fontWeight: "bold",
                         color: "#1D94A4",
                       }}
@@ -91,7 +98,7 @@ export default function AddToCart({ params }: { params: { service: string } }) {
                       {item.price}
                       <span
                         style={{
-                          fontSize: "16px",
+                          fontSize: "clamp(0.7rem, 1.2vw, 1.5rem)",
                           fontWeight: "bolder",
                         }}
                       >
@@ -140,7 +147,12 @@ export default function AddToCart({ params }: { params: { service: string } }) {
                   <p className="price">
                     {option.price * option.quantity}
                     {""}
-                    <span style={{ fontSize: "1.8vw", fontWeight: "bold" }}>
+                    <span
+                      style={{
+                        fontSize: "clamp(1.2rem, 1.8vw, 2.2rem)",
+                        fontWeight: "bold",
+                      }}
+                    >
                       &#2547;
                     </span>
                   </p>
@@ -152,7 +164,12 @@ export default function AddToCart({ params }: { params: { service: string } }) {
 
               <p className="price">
                 {total}
-                <span style={{ fontSize: "2vw", fontWeight: "bold" }}>
+                <span
+                  style={{
+                    fontSize: "clamp(1.3rem, 2vw, 2.5rem)",
+                    fontWeight: "bold",
+                  }}
+                >
                   &#2547;
                 </span>
               </p>

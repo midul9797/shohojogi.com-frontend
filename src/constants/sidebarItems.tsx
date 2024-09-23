@@ -12,7 +12,10 @@ export const sidebarItems = (role: string) => {
   const defaultSidebarItems: MenuProps["items"] = [
     {
       label: (
-        <Link href={`/dashboard/profile`} style={{ fontSize: "1vw" }}>
+        <Link
+          href={`/dashboard/profile`}
+          style={{ fontSize: "clamp(12px, 1vw, 16px)" }}
+        >
           Profile
         </Link>
       ),
@@ -27,7 +30,7 @@ export const sidebarItems = (role: string) => {
       label: (
         <Link
           href={`/dashboard/${role}/manage-orders`}
-          style={{ fontSize: "1vw" }}
+          style={{ fontSize: "clamp(12px, 1vw, 16px)" }}
         >
           Manage Orders
         </Link>
@@ -39,7 +42,7 @@ export const sidebarItems = (role: string) => {
       label: (
         <Link
           href={`/dashboard/${role}/make-admin`}
-          style={{ fontSize: "1vw" }}
+          style={{ fontSize: "clamp(12px, 1vw, 16px)" }}
         >
           Make Admin
         </Link>
@@ -49,7 +52,9 @@ export const sidebarItems = (role: string) => {
     },
 
     {
-      label: <p style={{ fontSize: "1vw" }}>Manage Services</p>,
+      label: (
+        <p style={{ fontSize: "clamp(12px, 1vw, 16px)" }}>Manage Services</p>
+      ),
       icon: <DatabaseOutlined />,
       key: `/dashboard/${role}/manage-services`,
       children: [
@@ -57,7 +62,7 @@ export const sidebarItems = (role: string) => {
           label: (
             <Link
               href={`/dashboard/${role}/add-service`}
-              style={{ fontSize: "1vw" }}
+              style={{ fontSize: "clamp(12px, 1vw, 16px)" }}
             >
               Add Service
             </Link>
@@ -68,7 +73,7 @@ export const sidebarItems = (role: string) => {
           label: (
             <Link
               href={`/dashboard/${role}/all-services`}
-              style={{ fontSize: "1vw" }}
+              style={{ fontSize: "clamp(12px, 1vw, 16px)" }}
             >
               All Services
             </Link>
@@ -83,7 +88,10 @@ export const sidebarItems = (role: string) => {
     ...defaultSidebarItems,
     {
       label: (
-        <Link href={`/dashboard/${role}/my-orders`} style={{ fontSize: "1vw" }}>
+        <Link
+          href={`/dashboard/${role}/my-orders`}
+          style={{ fontSize: "clamp(12px, 1vw, 16px)" }}
+        >
           My Orders
         </Link>
       ),

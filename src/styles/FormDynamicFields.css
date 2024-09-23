@@ -1,0 +1,14 @@
+.form-dynamic-fields {
+  margin-bottom: clamp(2px, 0.5vw, 5px);
+  border-radius: clamp(2px, 0.5vw, 5px);
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 1vw, 10px);
+}
+
+@media (max-width: 768px) {
+  .form-dynamic-fields {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

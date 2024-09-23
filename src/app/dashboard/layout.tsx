@@ -38,12 +38,12 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <Layout style={{ minHeight: "100vh" }}>
           <SideBar />
           <Layout>
-            <Content style={{ margin: "0 16px" }}>
+            <Content style={{ margin: "0 clamp(5px, 1vw, 16px)" }}>
               <Breadcrumb
                 separator=" "
                 style={{
-                  fontSize: "1.3vw",
-                  margin: "2vw 1vw",
+                  fontSize: "clamp(16px, 1.3vw, 24px)",
+                  margin: "clamp(16px, 2vw, 32px) clamp(8px, 1vw, 16px)",
                   fontWeight: "bold",
                 }}
                 items={[
@@ -58,7 +58,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
               />
               <div
                 style={{
-                  padding: 24,
+                  padding: "clamp(5px, 2vw, 32px)",
                   minHeight: 360,
                   background: "white",
                 }}

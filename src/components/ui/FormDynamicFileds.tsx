@@ -4,7 +4,8 @@ import { Button, Col, Empty, Row } from "antd";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import FormInput from "../Forms/FormInput";
 import { useEffect } from "react";
-
+import { DeleteOutlined } from "@ant-design/icons";
+import "@/styles/FormDynamicFields.css";
 const FormDynamicFields = ({
   name,
   type,
@@ -28,19 +29,10 @@ const FormDynamicFields = ({
         {fields.length > 0 ? (
           fields.map((item, index) => {
             return (
-              <div
-                key={index}
-                style={{
-                  marginBottom: "5px",
-
-                  borderRadius: "5px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
+              <div key={index} className="form-dynamic-fields">
                 {type === "single" ? (
                   <FormInput
+                    size="large"
                     name={name + "." + index + "."}
                     type="text"
                     placeholder={`Enter your ${name}`}
@@ -48,11 +40,13 @@ const FormDynamicFields = ({
                 ) : (
                   <>
                     <FormInput
+                      size="large"
                       name={name + "." + index + "." + first}
                       type="text"
                       placeholder={`Enter your ${first}`}
                     />
                     <FormInput
+                      size="large"
                       name={name + "." + index + "." + second}
                       type={name === "faq" ? "text" : "number"}
                       placeholder={`Enter your ${second}`}
@@ -64,9 +58,9 @@ const FormDynamicFields = ({
                   type="primary"
                   onClick={() => remove(index)}
                   danger
-                  style={{ margin: "5px 0px" }}
+                  style={{ margin: "clamp(2px, 0.5vw, 5px) 0px" }}
                 >
-                  Delete
+                  <DeleteOutlined />
                 </Button>
               </div>
             );

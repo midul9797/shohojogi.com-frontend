@@ -22,7 +22,9 @@ export default function ServicePage({
       items.push({
         key: index,
         label: (
-          <p style={{ fontWeight: "bold", fontSize: "1.4vw" }}>
+          <p
+            style={{ fontWeight: "bold", fontSize: "clamp(14px, 1.4vw, 22px)" }}
+          >
             {index + 1}.{f.question}
           </p>
         ),
@@ -56,23 +58,9 @@ export default function ServicePage({
               </span>{" "}
               Service
             </p>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                flexDirection: "column",
-              }}
-            >
+            <div className="service-details-tagline-container">
               {data?.taglines.map((text: string) => (
-                <div
-                  key={text}
-                  style={{
-                    display: "flex",
-                    margin: "0.5vw",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
+                <div key={text} className="service-details-tagline">
                   <div className="service-details-tagline-checked">
                     <CheckOutlined />
                   </div>

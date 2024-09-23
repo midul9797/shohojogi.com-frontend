@@ -17,11 +17,10 @@ export default function Navbar() {
   useEffect(() => {
     setLoggedIn(isLoggedIn());
   }, []);
-  console.log(data);
   const profileItems: MenuProps["items"] = [
     {
       label: (
-        <p style={{ fontWeight: "bold", fontSize: "1.2vw" }}>
+        <p style={{ fontWeight: "bold", fontSize: "clamp(12px, 1.2vw, 14px)" }}>
           {data?.first_name} {data?.last_name}
         </p>
       ),
@@ -58,7 +57,7 @@ export default function Navbar() {
       label: (
         <Link
           href={`/services/${item?.route_name}`}
-          style={{ fontSize: "1vw" }}
+          style={{ fontSize: "clamp(12px, 1vw, 16px)" }}
         >
           {item?.name}
         </Link>
@@ -84,7 +83,7 @@ export default function Navbar() {
             <a onClick={(e) => e.preventDefault()}>
               <Avatar
                 size="large"
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", backgroundColor: "#1D94A4" }}
                 src={data?.profileImg || <UserOutlined />}
                 onClick={(e) => e?.preventDefault()}
               />

@@ -12,6 +12,7 @@ import { signupSchema } from "@/schemas/signup";
 import { useUserSignupMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
 import "@/styles/SignUp.css";
+import { LoadingOutlined } from "@ant-design/icons";
 type FormValues = {
   first_name: string;
   last_name: string;
@@ -21,7 +22,7 @@ type FormValues = {
 };
 
 const SignupPage = () => {
-  const [userSignup] = useUserSignupMutation();
+  const [userSignup, { isLoading }] = useUserSignupMutation();
   const router = useRouter();
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
@@ -31,9 +32,11 @@ const SignupPage = () => {
       if (res) {
         router.push("/login");
         message.success("User created successfully!");
+      } else {
+        message.error("Internal server error");
       }
     } catch (err: any) {
-      console.error(err.message);
+      message.error(err.message);
     }
   };
   return (
@@ -129,9 +132,12 @@ const SignupPage = () => {
                   backgroundColor: "#1D94A4",
                 }}
               >
-                Create Account
+                {isLoading ? <LoadingOutlined /> : "Create Account"}
               </Button>
             </Form>
+            <Link href={"/login"}>
+              <p>Already have an account? Login</p>
+            </Link>
           </div>
         </Col>
       </Row>

@@ -156,13 +156,20 @@ export default function CheckoutPage() {
           <div className="schedule">
             <div className="icon-and-title">
               <ScheduleOutlined className="icon" />
-              <p style={{ fontWeight: "bold" }}>Schedule</p>
+              <p
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "clamp(12px, 1.2vw, 16px)",
+                }}
+              >
+                Schedule
+              </p>
             </div>
-            <p className="sub">
+            <p className="sub" style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
               Expert will arrive at your given address at {time}
             </p>
             <div className="schedule-time">
-              <p>
+              <p style={{ fontSize: "clamp(12px, 1.2vw, 16px)" }}>
                 {day} {month}, {year} | {time}
               </p>
               <button
@@ -200,11 +207,11 @@ export default function CheckoutPage() {
                   }}
                 >
                   <div>
-                    <p>Date</p>
+                    <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>Date</p>
                     <DatePicker onChange={onDateChange} format={"DD-MM-YYYY"} />
                   </div>
                   <div>
-                    <p>Time</p>
+                    <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>Time</p>
                     <TimePicker
                       changeOnBlur={true}
                       use12Hours
@@ -227,12 +234,27 @@ export default function CheckoutPage() {
           <div className="contact">
             <div className="icon-and-title">
               <ContactsOutlined className="icon" />
-              <p style={{ fontWeight: "bold" }}>Contact Person</p>
+              <p
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "clamp(12px, 1.2vw, 16px)",
+                }}
+              >
+                Contact Person
+              </p>
             </div>
-            <p className="sub">Expert will contact with the following person</p>
+            <p className="sub" style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
+              Expert will contact with the following person
+            </p>
             <div className="name-and-number">
-              <p style={{ color: "grey" }}>{fullName}</p>
-              <p style={{ color: "grey" }}>
+              <p
+                style={{ color: "grey", fontSize: "clamp(12px, 1.2vw, 16px)" }}
+              >
+                {fullName}
+              </p>
+              <p
+                style={{ color: "grey", fontSize: "clamp(12px, 1.2vw, 16px)" }}
+              >
                 {contact ? contact : "Contact Number"}
               </p>
               <button
@@ -270,7 +292,14 @@ export default function CheckoutPage() {
                   }}
                 >
                   <div>
-                    <p style={{ margin: "10px" }}>Name : </p>
+                    <p
+                      style={{
+                        margin: "10px",
+                        fontSize: "clamp(12px, 1.2vw, 14px)",
+                      }}
+                    >
+                      Name :{" "}
+                    </p>
                     <input
                       type="text"
                       className="address-input-field"
@@ -279,7 +308,14 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <p style={{ margin: "10px" }}>Contact NO. : </p>
+                    <p
+                      style={{
+                        margin: "10px",
+                        fontSize: "clamp(12px, 1.2vw, 14px)",
+                      }}
+                    >
+                      Contact NO. :{" "}
+                    </p>
                     <input
                       type="number"
                       className="address-input-field"
@@ -294,12 +330,23 @@ export default function CheckoutPage() {
           <div className="address">
             <div className="icon-and-title">
               <HomeOutlined className="icon" />
-              <p style={{ fontWeight: "bold" }}>Address</p>
+              <p
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "clamp(12px, 1.2vw, 16px)",
+                }}
+              >
+                Address
+              </p>
             </div>
-            <p className="sub">Expert will arrive at the address given below</p>
+            <p className="sub" style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
+              Expert will arrive at the address given below
+            </p>
             <div className="address-inputs">
               <div className="address-input">
-                <p>House No./Name</p>
+                <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
+                  House No./Name
+                </p>
                 <input
                   type="text"
                   className="address-input-field"
@@ -307,7 +354,9 @@ export default function CheckoutPage() {
                 />
               </div>
               <div className="address-input">
-                <p>Road No./Name</p>
+                <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
+                  Road No./Name
+                </p>
                 <input
                   type="text"
                   className="address-input-field"
@@ -317,7 +366,7 @@ export default function CheckoutPage() {
             </div>
             <div className="address-inputs">
               <div className="address-input">
-                <p>Block</p>
+                <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>Block</p>
                 <input
                   type="text"
                   className="address-input-field"
@@ -325,7 +374,7 @@ export default function CheckoutPage() {
                 />
               </div>
               <div className="address-input">
-                <p>Ward No.</p>
+                <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>Ward No.</p>
                 <input
                   type="text"
                   className="address-input-field"
@@ -335,7 +384,7 @@ export default function CheckoutPage() {
             </div>
             <div>
               <div className="address-input">
-                <p>Others</p>
+                <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>Others</p>
                 <input
                   type="text"
                   className="address-input-field"
@@ -347,15 +396,25 @@ export default function CheckoutPage() {
           <div className="service-detail">
             <div className="icon-and-title">
               <FileDoneOutlined className="icon" />
-              <p style={{ fontWeight: "bold" }}>Service Details</p>
+              <p
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "clamp(12px, 1.2vw, 16px)",
+                }}
+              >
+                Service Details
+              </p>
             </div>
-            <p className="sub">
+            <p className="sub" style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
               Our service provider will call you to confirm the service
             </p>
-            <p>{name}</p>
+            <p style={{ fontSize: "clamp(12px, 1.2vw, 16px)" }}>{name}</p>
             <ul>
               {options.map((item: any) => (
-                <li key={item.name}>
+                <li
+                  key={item.name}
+                  style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}
+                >
                   {item?.name} x{item?.quantity}
                 </li>
               ))}
@@ -363,62 +422,115 @@ export default function CheckoutPage() {
           </div>
         </div>
         <div className="order-summary">
-          <p className="order-heading">Order Summary</p>
-          <p style={{ fontWeight: "bold" }}>House Shifting</p>
+          <p
+            className="order-heading"
+            style={{ fontSize: "clamp(12px, 1.6vw, 16px)" }}
+          >
+            Order Summary
+          </p>
+          <p
+            style={{ fontWeight: "bold", fontSize: "clamp(12px, 1.4vw, 16px)" }}
+          >
+            House Shifting
+          </p>
           {options.map((item: any) => (
             <div className="price-details" key={item.name}>
-              <p>
+              <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
                 {item?.name} x{item?.quantity}
               </p>
-              <p className="price">
+              <p
+                className="price"
+                style={{ fontSize: "clamp(12px, 1.4vw, 16px)" }}
+              >
                 {item?.price}
                 {""}
-                <span style={{ fontSize: "1.8vw", fontWeight: "bold" }}>
+                <span
+                  style={{
+                    fontSize: "clamp(12px, 1.4vw, 24px)",
+                    fontWeight: "bold",
+                  }}
+                >
                   &#2547;
                 </span>
               </p>
             </div>
           ))}
           <div className="subtotal">
-            <p>Subtotal</p>
-            <p className="price">
+            <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>Subtotal</p>
+            <p
+              className="price"
+              style={{ fontSize: "clamp(12px, 1.4vw, 16px)" }}
+            >
               {total}
               {""}
-              <span style={{ fontSize: "1.8vw", fontWeight: "bold" }}>
+              <span
+                style={{
+                  fontSize: "clamp(12px, 1.4vw, 24px)",
+                  fontWeight: "bold",
+                }}
+              >
                 &#2547;
               </span>
             </p>
           </div>
           <div className="subtotal">
-            <p>Delivery Fee</p>
-            <p className="price">
+            <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>Delivery Fee</p>
+            <p
+              className="price"
+              style={{ fontSize: "clamp(12px, 1.4vw, 16px)" }}
+            >
               100{""}
-              <span style={{ fontSize: "1.8vw", fontWeight: "bold" }}>
+              <span
+                style={{
+                  fontSize: "clamp(12px, 1.4vw, 24px)",
+                  fontWeight: "bold",
+                }}
+              >
                 &#2547;
               </span>
             </p>
           </div>
           <div
             className="subtotal"
-            style={{ borderTop: "1px solid #d7d7d7", padding: "1.5vw 0" }}
+            style={{
+              borderTop: "1px solid #d7d7d7",
+              padding: "clamp(12px, 1.2vw, 14px) 0",
+            }}
           >
-            <p style={{ fontWeight: "bold" }}>Amount to be paid</p>
-            <p className="price">
+            <p
+              style={{
+                fontWeight: "bold",
+                fontSize: "clamp(12px, 1.4vw, 16px)",
+              }}
+            >
+              Amount to be paid
+            </p>
+            <p
+              className="price"
+              style={{ fontSize: "clamp(12px, 1.4vw, 16px)" }}
+            >
               {total + 100}
               {""}
-              <span style={{ fontSize: "1.8vw", fontWeight: "bold" }}>
+              <span
+                style={{
+                  fontSize: "clamp(12px, 1.4vw, 16px)",
+                  fontWeight: "bold",
+                }}
+              >
                 &#2547;
               </span>
             </p>
           </div>
-          <p className="terms">
+          <p className="terms" style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
             *Prices are VAT included
             <br />
             *Price may vary considering on product availability
           </p>
           <div className="icon-and-title">
             <FormOutlined className="icon" />
-            <p>Do you want to add any additional notes</p>
+            <p style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}>
+              Do you want to add any additional notes
+            </p>
           </div>
           <input
             className="message-input-area"

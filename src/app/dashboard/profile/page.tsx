@@ -46,7 +46,11 @@ export default function Profile() {
       <div className="profile-page">
         <div>
           <p
-            style={{ fontSize: "2vw", fontWeight: "bold", marginBottom: "2vw" }}
+            style={{
+              fontSize: "clamp(16px, 2vw, 32px)",
+              fontWeight: "bold",
+              marginBottom: "2vw",
+            }}
           >
             Edit Profile
           </p>
@@ -70,6 +74,7 @@ export default function Profile() {
               <div className="edit-profile-inputs">
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     name="first_name"
                     label="First Name"
@@ -78,6 +83,7 @@ export default function Profile() {
                 </div>
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     name="last_name"
                     label="Last Name"
@@ -88,6 +94,7 @@ export default function Profile() {
               <div>
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     name="email"
                     label="Email"
@@ -98,6 +105,7 @@ export default function Profile() {
               <div>
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     label="Contact Number"
                     name="contactNo"
@@ -108,6 +116,7 @@ export default function Profile() {
               <div className="edit-profile-inputs">
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     label="House"
                     name="address.house"
@@ -116,6 +125,7 @@ export default function Profile() {
                 </div>
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     label="Road"
                     name="address.road"
@@ -126,6 +136,7 @@ export default function Profile() {
               <div className="edit-profile-inputs">
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     label="Block"
                     name="address.block"
@@ -134,6 +145,7 @@ export default function Profile() {
                 </div>
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     label="Ward"
                     name="address.ward"
@@ -144,6 +156,7 @@ export default function Profile() {
               <div className="edit-profile-inputs">
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="number"
                     label="Zip Code"
                     name="address.zip"
@@ -152,6 +165,7 @@ export default function Profile() {
                 </div>
                 <div className="edit-profile-input">
                   <FormInput
+                    size="large"
                     type="text"
                     label="City"
                     name="address.city"

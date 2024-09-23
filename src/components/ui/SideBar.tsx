@@ -38,12 +38,16 @@ const SideBar = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            margin: "3vw auto",
+            margin: "clamp(10px, 3vw, 32px) auto",
           }}
         >
           <Link
             href={"/"}
-            style={{ fontWeight: "bold", fontSize: "1.5vw", color: "white" }}
+            style={{
+              fontWeight: "bold",
+              fontSize: " clamp(12px, 2vw, 24px) ",
+              color: "white",
+            }}
           >
             SHOHOJOGI.COM
           </Link>
